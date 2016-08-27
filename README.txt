@@ -1,8 +1,6 @@
 Challenger Stats
 
-Utilizando a API da Riot (https://developer.riotgames.com/) criar uma aplicaÁ„o que diponibiliza v·rios dados sobre 
-os campeıes de League of Legends, como itens, runas, talentos mais usados, builds com maior porcentagem de vitÛrias, 
-e estatÌsticas gerais do campe„o, com base em partidas de jogadores challenger das diversas regiıes diponÌveis. 
+Utilizando a API da Riot (https://developer.riotgames.com/) criar uma aplica√ß√£o que diponibiliza v√°rios dados sobre os campe√µes de League of Legends, como itens, runas, talentos mais usados, builds com maior porcentagem de vit√≥rias, e estat√≠sticas gerais do campe√£o, com base em partidas de jogadores challenger das diversas regi√µes dipon√≠veis. 
 
 Bibliotecas utilizadas nesse projeto:
 
