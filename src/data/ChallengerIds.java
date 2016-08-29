@@ -10,6 +10,13 @@ import net.rithms.riot.dto.League.League;
 import net.rithms.riot.dto.League.LeagueEntry;
 import net.rithms.riot.api.RiotApiException;
 
+/**
+ * 
+ * @author filip
+ * 
+ * ChallengerIds pega todos os IDs da liga challenger ranked solo 5x5 de uma determinada regiao
+ *	e armazena em um array;
+ */
 public class ChallengerIds {
 
 	private String[] ids;
