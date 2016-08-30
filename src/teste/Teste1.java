@@ -13,12 +13,12 @@ import net.rithms.riot.api.*;
 
 public class Teste1 {
 
-	public static void main(String[] args) throws RiotApiException, IOException {
+	public static void main(String[] args) throws RiotApiException, IOException, InterruptedException {
 		
 		RiotApi api = new RiotApi(readFile("Key\\key.txt", Charset.defaultCharset()));
 		
 		//MatchList matchList = api.getMatchList(Region.BR, id, "", "", "",Patches.V6_16.getBeginTime(), Patches.V6_16.getEndTime(), -1, -1);
-		ChallengerMatches c = new ChallengerMatches(api,Region.BR,Patches.V6_15);
+		ChallengerMatches c = new ChallengerMatches(api,Region.NA,Patches.V6_15);
 		System.out.println(c.getChallengerMatchList().size());
 	}
 	static String readFile(String path, Charset encoding) throws IOException {

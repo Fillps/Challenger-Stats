@@ -25,22 +25,39 @@ public class ChallengerMatches {
 		this.patches = patches;
 	}
 	
-	public List<Long> getChallengerMatchList() throws RiotApiException{
+	public List<Long> getChallengerMatchList() throws RiotApiException, InterruptedException{
 		List<Long> ids = getChallengerIds();
 		List<Long> matchesIds = new ArrayList<Long>();
-		MatchList matchList;
+		MatchList matchList = null;
 		for(int i=0; i<ids.size();i++){
-			matchList = api.getMatchList(region, ids.get(i), "", "", "", patches.getBeginTime(), patches.getEndTime(), -1, -1);
-			List<MatchReference> matchReferences = matchList.getMatches();
-			for(int j=0; j<matchReferences.size();j++){
-				matchesIds.add(matchReferences.get(j).getMatchId());
+			try {
+				matchList = api.getMatchList(region, ids.get(i), "", "", "", patches.getBeginTime(), patches.getEndTime(), -1, -1);
+				System.out.println(i+1);
+			} catch(RiotApiException e) {
+				e.printStackTrace();
+			    Thread.currentThread().interrupt();
+			}               //1000 milliseconds is one second.
+			if (matchList!=null){
+				List<MatchReference> matchReferences = matchList.getMatches();
+				if (matchReferences!=null){
+					for(int j=0; j<matchReferences.size();j++){
+						matchesIds.add(matchReferences.get(j).getMatchId());
+					}
+				}
 			}
 		}
 		return matchesIds;
 	}
 	
+	
 	private List<Long> getChallengerIds() throws RiotApiException{
-		League challenger = api.getChallengerLeague(region, QueueType.RANKED_SOLO_5x5);
+		League challenger = null;
+		try {
+			challenger = api.getChallengerLeague(region, QueueType.RANKED_SOLO_5x5);
+		} catch(InterruptedException e) {
+			e.printStackTrace();
+		    Thread.currentThread().interrupt();
+		}
 		List<LeagueEntry> challengerEntry = challenger.getEntries();
     	Iterator<LeagueEntry> it = challengerEntry.iterator();
     	LeagueEntry entry;
