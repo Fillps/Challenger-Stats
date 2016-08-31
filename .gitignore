@@ -50,3 +50,7 @@ Temporary Items
 Key
 
 #testes
+**/src/teste/
+
+#target - .class files
+target

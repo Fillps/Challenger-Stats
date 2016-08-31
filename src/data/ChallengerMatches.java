@@ -3,6 +3,8 @@ package data;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
+import java.util.HashSet;
 
 import constants.Patches;
 import net.rithms.riot.api.RiotApi;
@@ -25,14 +27,13 @@ public class ChallengerMatches {
 		this.patches = patches;
 	}
 	
-	public List<Long> getChallengerMatchList() throws RiotApiException, InterruptedException{
+	public Set<Long> getChallengerMatchList() throws RiotApiException, InterruptedException{
 		List<Long> ids = getChallengerIds();
 		List<Long> matchesIds = new ArrayList<Long>();
 		MatchList matchList = null;
 		for(int i=0; i<ids.size();i++){
 			try {
 				matchList = api.getMatchList(region, ids.get(i), "", "", "", patches.getBeginTime(), patches.getEndTime(), -1, -1);
-				System.out.println(i+1);
 			} catch(RiotApiException e) {
 				e.printStackTrace();
 			    Thread.currentThread().interrupt();
@@ -46,7 +47,8 @@ public class ChallengerMatches {
 				}
 			}
 		}
-		return matchesIds;
+		Set<Long> setMatches = new HashSet<Long>(matchesIds);
+		return setMatches;
 	}
 	
 	
@@ -54,7 +56,7 @@ public class ChallengerMatches {
 		League challenger = null;
 		try {
 			challenger = api.getChallengerLeague(region, QueueType.RANKED_SOLO_5x5);
-		} catch(InterruptedException e) {
+		} catch(RiotApiException e) {
 			e.printStackTrace();
 		    Thread.currentThread().interrupt();
 		}
