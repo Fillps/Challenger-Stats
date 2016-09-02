@@ -13,6 +13,7 @@ import net.rithms.riot.constant.QueueType;
 import net.rithms.riot.constant.Region;
 import net.rithms.riot.dto.League.League;
 import net.rithms.riot.dto.League.LeagueEntry;
+import net.rithms.riot.dto.Match.MatchDetail;
 import net.rithms.riot.dto.MatchList.MatchList;
 import net.rithms.riot.dto.MatchList.MatchReference;
 
@@ -26,8 +27,26 @@ public class ChallengerMatches {
 		this.region = region;
 		this.patches = patches;
 	}
+	public List<MatchDetail> getChallengerMatches() throws RiotApiException, InterruptedException{
+		Set<Long> matchesIds = getChallengerMatchListIds();
+		Iterator<Long> it = matchesIds.iterator();
+		List<MatchDetail> listMatches = new ArrayList<MatchDetail>();
+		MatchDetail matchDetail = null;
+		int i = 1;
+		while (it.hasNext()){
+			try {
+				matchDetail = api.getMatch(region, it.next(), true);
+				listMatches.add(matchDetail);
+				System.out.println("Game " + i++);
+			} catch(RiotApiException e) {
+				e.printStackTrace();
+				Thread.currentThread().interrupt();
+			}
+		}
+		return listMatches;
+	}
 	
-	public Set<Long> getChallengerMatchList() throws RiotApiException, InterruptedException{
+	private Set<Long> getChallengerMatchListIds() throws RiotApiException, InterruptedException{
 		List<Long> ids = getChallengerIds();
 		List<Long> matchesIds = new ArrayList<Long>();
 		MatchList matchList = null;
@@ -37,7 +56,7 @@ public class ChallengerMatches {
 			} catch(RiotApiException e) {
 				e.printStackTrace();
 			    Thread.currentThread().interrupt();
-			}               //1000 milliseconds is one second.
+			}              
 			if (matchList!=null){
 				List<MatchReference> matchReferences = matchList.getMatches();
 				if (matchReferences!=null){
