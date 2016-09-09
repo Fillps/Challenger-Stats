@@ -54,3 +54,10 @@ Key
 
 #target - .class files
 target
+
+dados
+
+.project
+.classpath
+.gitattributes
+.gitignore
