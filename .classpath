@@ -17,6 +17,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/filip/workspace/Challenger Stats/library/java-riot-api-09-20162.jar" sourcepath="C:/Users/filip/workspace/Challenger Stats/library/riot-api-java-master (2).zip"/>
+	<classpathentry kind="lib" path="C:/Users/filip/workspace/Challenger Stats/library/java-riot-api-09-20162.jar" sourcepath="C:/Users/filip/workspace/Challenger Stats/library/java-riot-api-09-20162.zip"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
