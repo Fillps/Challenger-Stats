@@ -5,15 +5,15 @@ import java.util.Comparator;
 import net.rithms.riot.api.endpoints.match.dto.MatchDetail;
 
 public class Comparators {
-	public MatchDetailComparatorByRegion matchDetailByRegion(){
+	public static MatchDetailComparatorByRegion matchDetailByRegion(){
 		return new MatchDetailComparatorByRegion();
 	}
 	
-	public MatchDetailComparatorById matchDetailById(){
+	public static MatchDetailComparatorById matchDetailById(){
 		return new MatchDetailComparatorById();
 	}
 	
-	public MatchDetailComparatorByPatch matchDetailByPatch(){
+	public static MatchDetailComparatorByPatch matchDetailByPatch(){
 		return new MatchDetailComparatorByPatch();
 	}
 }
