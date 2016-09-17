@@ -16,13 +16,13 @@ import net.rithms.riot.api.endpoints.matchlist.dto.MatchList;
 import net.rithms.riot.api.endpoints.matchlist.dto.MatchReference;
 import net.rithms.riot.api.request.AsyncRequest;
 import net.rithms.riot.api.request.RequestAdapter;
-
+/*
+ * Classe que permite armazenar ou obter, com todos os ids dos jogadores, 
+ * partidas ranqueadas de um determinado patch na sua determinada regiao,
+ * armazenado mas ids das partidas.
+ */
 public class ChallengerMatchesIds extends ChallengerIds{
 	
-	/**
-	 * 
-	 */
-	//private static final long serialVersionUID = -1916488480110885685L;
 	private static final long serialVersionUID = 8750873115069883839L;
 	protected  List<Queue<Long>> matchesIds;
 	protected  List<Queue<Long>> idsDeleted;
@@ -46,12 +46,14 @@ public class ChallengerMatchesIds extends ChallengerIds{
 		return this.idsDeleted;
 	}
 	
+	/*
+	 * usando a RiotApi, se obtem os ids das partidas de todos os jagadores da lista
+	 */
 	public void methodChallengerMatchesIds(RiotApi api) throws RiotApiException, InterruptedException{
 		
 		RiotApiAsync apiAsync = api.getAsyncApi();
 		int idsTotais = 0;
 		int idsRemovidos = 0;
-		//int pronto = 0; // quando passar por todos ids == this.regions.size()
 		List<Queue<Long>> listIds = this.listChallengerIds;
 		List<Queue<Long>> listMatchesIds = new ArrayList<Queue<Long>>();
 		List<Queue<Long>> listMatchesIdsDeleted = new ArrayList<Queue<Long>>();
@@ -67,7 +69,6 @@ public class ChallengerMatchesIds extends ChallengerIds{
 			for (int i = 0 ; i<this.regions.size() ; i++){
 				if (!listIds.get(i).isEmpty()){
 					final int innerIndex = i;
-					//System.out.println("Pedindo " + this.regions.get(innerIndex).name());
 					AsyncRequest requestMatchList = apiAsync.getMatchList(this.regions.get(i), listIds.get(i).peek(), "", "", "", patch.getBeginTime(), patch.getEndTime(), -1, -1);
 					requestMatchList.addListeners(new RequestAdapter() {
 						@Override
@@ -82,19 +83,15 @@ public class ChallengerMatchesIds extends ChallengerIds{
 									}
 								}
 							}
-							//System.out.println("Retornando " + regions.get(innerIndex).name());
 						}
 						@Override
 						public void onRequestFailed(RiotApiException e) {
-							//RiotApi.log.log(Level.SEVERE, "Waiting Interrupted", e);
 							System.out.println(e.getErrorCode());
 							if (e.getErrorCode()!=429){
 								listMatchesIdsDeleted.get(innerIndex).add(listIds.get(innerIndex).remove());
 							}
 						}
 					});
-					//if (listIds.get(i).isEmpty())
-					//	pronto++;
 				}
 				idsRestantes = idsRestantes + listIds.get(i).size();
 				idsRemovidos = idsRemovidos + listMatchesIdsDeleted.get(i).size();
@@ -102,17 +99,13 @@ public class ChallengerMatchesIds extends ChallengerIds{
 			System.out.println("Restantes: " + idsRestantes + "/" + idsTotais + " Removidos: " + idsRemovidos + " Sucessos: " + (idsTotais-idsRestantes-idsRemovidos));
 			try {			
 				Thread.sleep(sleepTime);
-				//System.out.println("Sleep 1s");
 			} catch (InterruptedException ex){
 				ex.printStackTrace();
 				throw new RuntimeException(ex);
 			}
 			try {
-				// Wait for all asynchronous requests to finish
 				apiAsync.awaitAll();
-				//System.out.println("AwaitAll");
 			} catch (InterruptedException e) {
-				// We can use the Api's logger
 				RiotApi.log.log(Level.SEVERE, "Waiting Interrupted", e);
 			}
 			

@@ -1,5 +1,13 @@
 package constants;
 
+/*
+ * Utilizando o tempo de inicio e o tempo de fim de um patch
+ * determinamos o periodo de tempo do determinado patch
+ * usando timestamps em milisegundos. 
+ *
+ */
+
+
 public enum Patches {
 	V6_17("V6_17", "1472025600000", "1473321600000"), // 24/08/2016 @ 8:00am, 08/09/2016 @ 8:00am
 	V6_16("V6_16", "1470816000000", "1472025600000"), // 10/08/2016 @ 8:00am, 24/08/2016 @ 8:00am

@@ -15,7 +15,11 @@ import net.rithms.riot.api.endpoints.match.dto.MatchDetail;
 import net.rithms.riot.api.request.AsyncRequest;
 import net.rithms.riot.api.request.RequestAdapter;
 
-
+/*
+ * Classe que permite armazenar ou obter, com todos os ids das partidas, 
+ * os detalhes das partidas ranqueadas na sua determinada regiao,
+ * armazenado os detalhes numa lista.
+ */
 public class ChallengerMatches extends ChallengerMatchesIds{
 	
 	private static final long serialVersionUID = 3144184202985087439L;
@@ -82,17 +86,13 @@ public class ChallengerMatches extends ChallengerMatchesIds{
 			System.out.println("Restantes: " + idsRestantes + "/" + idsTotais + " Removidos: " + idsRemovidos + " Sucessos: " + (idsTotais-idsRestantes-idsRemovidos));
 			try {			
 				Thread.sleep(sleepTime);
-				//System.out.println("Sleep 1s");
 			} catch (InterruptedException ex){
 				ex.printStackTrace();
 				throw new RuntimeException(ex);
 			}
 			try {
-				// Wait for all asynchronous requests to finish
 				apiAsync.awaitAll();
-				//System.out.println("AwaitAll");
 			} catch (InterruptedException e) {
-				// We can use the Api's logger
 				RiotApi.log.log(Level.SEVERE, "Waiting Interrupted", e);
 			}
 		}
