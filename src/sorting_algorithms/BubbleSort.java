@@ -3,6 +3,8 @@ package sorting_algorithms;
 import java.util.Comparator;
 
 class BubbleSort {
+	public static final String sigla = "BBST";
+	
 	public static <T> T[] sort(T[] array, Comparator<T> comparator){
 		int m = array.length - 1;
 		int k = 1;

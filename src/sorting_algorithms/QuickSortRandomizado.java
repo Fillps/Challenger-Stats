@@ -1,5 +1,14 @@
 package sorting_algorithms;
 
-class QuickSortRandomizado {
+import java.util.Comparator;
 
+class QuickSortRandomizado {
+	public static final String sigla = "QSRM";
+	
+	public static <T> T[] sort(T[] array, Comparator<T> comparator){
+		/*
+		 * TODO
+		 */
+		return array;
+	}
 }
