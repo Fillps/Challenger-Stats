@@ -49,15 +49,13 @@ Temporary Items
 #RiotApi key
 Key
 
-#testes
-**/src/teste/
-
 #target - .class files
 target
-
 dados
+bin
 
 .project
 .classpath
 .gitattributes
-.gitignore
+.settings
+
