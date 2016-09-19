@@ -23,67 +23,117 @@ public abstract class Testes {
 	 * e salva os resultados em um arquivo txt em um determinado local
 	 */
 	public static <T> void testeDeDesempenho(T[] array, Comparator<T> comparator, String local) throws IOException{
+		T[] clone;
 		long beginTime;
 		long endTime;
 		long duration;
 		String string;
 		FileWriter file = new FileWriter(local, true);
 		
+		
+		clone = array.clone();
 		beginTime = System.nanoTime();
-		SortingAlgorithms.bubbleSort(array.clone(), comparator);
+		SortingAlgorithms.bubbleSort(clone, comparator);
 		endTime = System.nanoTime();
 		duration = (endTime - beginTime) / 1000000; // duracao em ms
-		string = SortingAlgorithms.bubbleSortSigla() + ", " + comparator.toString() + ", " + array.length + ", " + duration + "\n";
-		file.write(string);
+		string = SortingAlgorithms.bubbleSortSigla() + ", " + comparator.toString() + ", " + array.length + ", " + duration;
+		file.write(string + "\n");
+		if (!testeDeOrdenamento(clone, comparator)){
+			System.out.println(string + " - nao ordenou.");
+		}
+		else
+			System.out.println(string);
 		
+		clone = array.clone();
 		beginTime = System.nanoTime();
-		SortingAlgorithms.heapSort(array.clone(), comparator);
+		SortingAlgorithms.heapSort(clone, comparator);
 		endTime = System.nanoTime();
 		duration = (endTime - beginTime) / 1000000;
-		string = SortingAlgorithms.heapSortSigla() + ", " + comparator.toString() + ", " + array.length + ", " + duration + "\n";
-		file.write(string);
+		string = SortingAlgorithms.heapSortSigla() + ", " + comparator.toString() + ", " + array.length + ", " + duration;
+		file.write(string + "\n");
+		if (!testeDeOrdenamento(clone, comparator)){
+			System.out.println(string + " - nao ordenou.");
+		}
+		else
+			System.out.println(string);
 		
+		clone = array.clone();
 		beginTime = System.nanoTime();
-		SortingAlgorithms.insertionSortBuscaBinaria(array.clone(), comparator);
+		SortingAlgorithms.insertionSortBuscaBinaria(clone, comparator);
 		endTime = System.nanoTime();
 		duration = (endTime - beginTime) / 1000000;
-		string = SortingAlgorithms.insertionSortBuscaBinariaSigla() + ", " + comparator.toString() + ", " + array.length + ", " + duration + "\n";
-		file.write(string);
+		string = SortingAlgorithms.insertionSortBuscaBinariaSigla() + ", " + comparator.toString() + ", " + array.length + ", " + duration;
+		file.write(string + "\n");
+		if (!testeDeOrdenamento(clone, comparator)){
+			System.out.println(string + " - nao ordenou.");
+		}
+		else
+			System.out.println(string);
 		
+		clone = array.clone();
 		beginTime = System.nanoTime();
-		SortingAlgorithms.insertionSortBuscaLinear(array.clone(), comparator);
+		SortingAlgorithms.insertionSortBuscaLinear(clone, comparator);
 		endTime = System.nanoTime();
 		duration = (endTime - beginTime) / 1000000;
-		string = SortingAlgorithms.insertionSortBuscaLinearSigla() + ", " + comparator.toString() + ", " + array.length + ", " + duration + "\n";
-		file.write(string);
+		string = SortingAlgorithms.insertionSortBuscaLinearSigla() + ", " + comparator.toString() + ", " + array.length + ", " + duration;
+		file.write(string + "\n");
+		if (!testeDeOrdenamento(clone, comparator)){
+			System.out.println(string + " - nao ordenou.");
+		}
+		else
+			System.out.println(string);
 		
+		clone = array.clone();
 		beginTime = System.nanoTime();
 		SortingAlgorithms.mergeSort(array.clone(), comparator);
 		endTime = System.nanoTime();
 		duration = (endTime - beginTime) / 1000000;
-		string = SortingAlgorithms.mergeSortSigla() + ", " + comparator.toString() + ", " + array.length + ", " + duration + "\n";
-		file.write(string);
+		string = SortingAlgorithms.mergeSortSigla() + ", " + comparator.toString() + ", " + array.length + ", " + duration;
+		file.write(string + "\n");
+		if (!testeDeOrdenamento(clone, comparator)){
+			System.out.println(string + " - nao ordenou.");
+		}
+		else
+			System.out.println(string);
 		
+		clone = array.clone();
 		beginTime = System.nanoTime();
-		SortingAlgorithms.quickSortRandomizado(array.clone(), comparator);
+		SortingAlgorithms.quickSortRandomizado(clone, comparator);
 		endTime = System.nanoTime();
 		duration = (endTime - beginTime) / 1000000;
-		string = SortingAlgorithms.quickSortRandomizadoSigla() + ", " + comparator.toString() + ", " + array.length + ", " + duration + "\n";
-		file.write(string);
+		string = SortingAlgorithms.quickSortRandomizadoSigla() + ", " + comparator.toString() + ", " + array.length + ", " + duration;
+		file.write(string + "\n");
+		if (!testeDeOrdenamento(clone, comparator)){
+			System.out.println(string + " - nao ordenou.");
+		}
+		else
+			System.out.println(string);
 		
+		clone = array.clone();
 		beginTime = System.nanoTime();
-		SortingAlgorithms.radixSort(array.clone(), comparator);
+		SortingAlgorithms.radixSort(clone, comparator);
 		endTime = System.nanoTime();
 		duration = (endTime - beginTime) / 1000000;
-		string = SortingAlgorithms.radixSortSigla() + ", " + comparator.toString() + ", " + array.length + ", " + duration + "\n";
-		file.write(string);
+		string = SortingAlgorithms.radixSortSigla() + ", " + comparator.toString() + ", " + array.length + ", " + duration;
+		file.write(string + "\n");
+		if (!testeDeOrdenamento(clone, comparator)){
+			System.out.println(string + " - nao ordenou.");
+		}
+		else
+			System.out.println(string);
 		
+		clone = array.clone();
 		beginTime = System.nanoTime();
-		SortingAlgorithms.shellSort(array.clone(), comparator);
+		SortingAlgorithms.shellSort(clone, comparator);
 		endTime = System.nanoTime();
 		duration = (endTime - beginTime) / 1000000;
-		string = SortingAlgorithms.shellSortSigla() + ", " + comparator.toString() + ", " + array.length + ", " + duration + "\n";
-		file.write(string);
+		string = SortingAlgorithms.shellSortSigla() + ", " + comparator.toString() + ", " + array.length + ", " + duration;
+		file.write(string + "\n");
+		if (!testeDeOrdenamento(clone, comparator)){
+			System.out.println(string + " - nao ordenou.");
+		}
+		else
+			System.out.println(string);
 		
 		file.close();
 		
