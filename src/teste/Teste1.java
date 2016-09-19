@@ -1,31 +1,43 @@
 package teste;
 
 import java.io.*;
+import java.util.Arrays;
 
-import data.Comparators;
+import comparators.Comparators;
 import data.WriterAndReader;
 
-import net.rithms.riot.api.RiotApiException;
 import net.rithms.riot.api.endpoints.match.dto.*;
+import sorting_algorithms.SortingAlgorithms;
 
 
 
 public class Teste1 {
 	
-	public static void main(String[] args) throws RiotApiException, IOException, InterruptedException {
+	public static void main(String[] args) throws IOException{
+		System.out.println("Iniciando leitura do arquivo.");
+		MatchDetail[] md = WriterAndReader.read("dados\\MatchDetail.V6_17.Reverse.Region.array");
+		System.out.println("Leitura concluida.");
+		System.out.println("Inicializando array de 100.");
+		int size = 100;
+		MatchDetail[] a1 = new MatchDetail[size];
+		for(int i = 0; i < size; i++)
+		    a1[i]=md[i];
+		System.out.println("Inicializando array de 1000.");
+		size = 1000;
+		MatchDetail[] a2 = new MatchDetail[size];
+		for(int i = 0; i < size; i++)
+		    a2[i]=md[i];
+		System.out.println("Inicializando array de 10000.");
+		size = 10000;
+		MatchDetail[] a3 = new MatchDetail[size];
+		for(int i = 0; i < size; i++)
+		    a3[i]=md[i];
 		String resultados = "dados\\resultados.txt";
-		MatchDetail[] md = WriterAndReader.read("dados\\MatchDetail.V6_17.Reverse.Id.array");
-		MatchDetail[] a100 = new MatchDetail[100];
-		for(int i = 0; i < 100; i++)
-		    a100[i]=md[i];
-		MatchDetail[] a1000 = new MatchDetail[1000];
-		for(int i = 0; i < 1000; i++)
-		    a1000[i]=md[i];
-		MatchDetail[] a10000 = new MatchDetail[10000];
-		for(int i = 0; i < 10000; i++)
-		    a10000[i]=md[i];
-		TesteDeDesempenho td1 = new TesteDeDesempenho(a100, Comparators.matchDetailById(), resultados);
-		TesteDeDesempenho td2 = new TesteDeDesempenho(a1000, Comparators.matchDetailById(), resultados);
-		TesteDeDesempenho td3 = new TesteDeDesempenho(a10000, Comparators.matchDetailById(), resultados);
+		System.out.println("Inicializando testes de desempenho.");
+		Testes.testeDeDesempenho(a1, Comparators.matchDetailByRegion(), resultados);
+		Testes.testeDeDesempenho(a2, Comparators.matchDetailByRegion(), resultados);
+		Testes.testeDeDesempenho(a3, Comparators.matchDetailByRegion(), resultados);
+		Testes.testeDeDesempenho(md, Comparators.matchDetailByRegion(), resultados);
+		System.out.println("Concluido. Resultados salvos em " + resultados + ".");
 	}
 }

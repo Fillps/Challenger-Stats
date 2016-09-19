@@ -3,29 +3,29 @@ package sorting_algorithms;
 import java.util.Comparator;
 
 public class SortingAlgorithms {
-	public static <T> T[] bubbleSort(T[] array, Comparator<T> comparator){
-		return BubbleSort.sort(array, comparator);
+	public static <T> void bubbleSort(T[] array, Comparator<T> comparator){
+		BubbleSort.sort(array, comparator);
 	}
-	public static <T> T[] heapSort(T[] array, Comparator<T> comparator){
-		return HeapSort.sort(array, comparator);
+	public static <T> void heapSort(T[] array, Comparator<T> comparator){
+		HeapSort.sort(array, comparator);
 	}
-	public static <T> T[] insertionSortBuscaBinaria(T[] array, Comparator<T> comparator){
-		return InsertionSortBuscaBinaria.sort(array, comparator);
+	public static <T> void insertionSortBuscaBinaria(T[] array, Comparator<T> comparator){
+		InsertionSortBuscaBinaria.sort(array, comparator);
 	}
-	public static <T> T[] insertionSortBuscaLinear(T[] array, Comparator<T> comparator){
-		return InsertionSortBuscaLinear.sort(array, comparator);
+	public static <T> void insertionSortBuscaLinear(T[] array, Comparator<T> comparator){
+		InsertionSortBuscaLinear.sort(array, comparator);
 	}
-	public static <T> T[] mergeSort(T[] array, Comparator<T> comparator){
-		return MergeSort.sort(array, comparator);
+	public static <T> void mergeSort(T[] array, Comparator<T> comparator){
+		MergeSort.sort(array, comparator);
 	}
-	public static <T> T[] quickSortRandomizado(T[] array, Comparator<T> comparator){
-		return QuickSortRandomizado.sort(array, comparator);
+	public static <T> void quickSortRandomizado(T[] array, Comparator<T> comparator){
+		QuickSortRandomizado.sort(array, comparator);
 	}
-	public static <T> T[] radixSort(T[] array, Comparator<T> comparator){
-		return RadixSort.sort(array, comparator);
+	public static <T> void radixSort(T[] array, Comparator<T> comparator){
+		RadixSort.sort(array, comparator);
 	}
-	public static <T> T[] shellSort(T[] array, Comparator<T> comparator){
-		return ShellSort.sort(array, comparator);
+	public static <T> void shellSort(T[] array, Comparator<T> comparator){
+		ShellSort.sort(array, comparator);
 	}
 	public static String bubbleSortSigla(){
 		return BubbleSort.sigla;

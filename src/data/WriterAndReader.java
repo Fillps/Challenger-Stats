@@ -12,17 +12,23 @@ import java.nio.file.Paths;
 
 public class WriterAndReader {
 	
+	
 	public static <T> T read(String local){
 		T t = null; 
 		try {
 			FileInputStream in = new FileInputStream(local);
 			ObjectInputStream ois = new ObjectInputStream(in);
-			t = (T) (ois.readObject());
+			t = readObject(ois);
 			ois.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return t;
+	}
+	
+	@SuppressWarnings("unchecked")
+	private static <T> T readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+	    return (T)in.readObject();
 	}
 	
 	public static <T> void write(T file, String local){
