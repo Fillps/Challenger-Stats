@@ -37,7 +37,7 @@ public abstract class Testes {
 		endTime = System.nanoTime();
 		duration = (endTime - beginTime) / 1000000; // duracao em ms
 		string = SortingAlgorithms.bubbleSortSigla() + ", " + comparator.toString() + ", " + array.length + ", " + duration;
-		file.write(string + "\n");
+		file.write(string + "\r\n");
 		if (!testeDeOrdenamento(clone, comparator)){
 			System.out.println(string + " - nao ordenou.");
 		}
@@ -50,7 +50,7 @@ public abstract class Testes {
 		endTime = System.nanoTime();
 		duration = (endTime - beginTime) / 1000000;
 		string = SortingAlgorithms.heapSortSigla() + ", " + comparator.toString() + ", " + array.length + ", " + duration;
-		file.write(string + "\n");
+		file.write(string + "\r\n");
 		if (!testeDeOrdenamento(clone, comparator)){
 			System.out.println(string + " - nao ordenou.");
 		}
@@ -63,7 +63,7 @@ public abstract class Testes {
 		endTime = System.nanoTime();
 		duration = (endTime - beginTime) / 1000000;
 		string = SortingAlgorithms.insertionSortBuscaBinariaSigla() + ", " + comparator.toString() + ", " + array.length + ", " + duration;
-		file.write(string + "\n");
+		file.write(string + "\r\n");
 		if (!testeDeOrdenamento(clone, comparator)){
 			System.out.println(string + " - nao ordenou.");
 		}
@@ -76,7 +76,7 @@ public abstract class Testes {
 		endTime = System.nanoTime();
 		duration = (endTime - beginTime) / 1000000;
 		string = SortingAlgorithms.insertionSortBuscaLinearSigla() + ", " + comparator.toString() + ", " + array.length + ", " + duration;
-		file.write(string + "\n");
+		file.write(string + "\r\n");
 		if (!testeDeOrdenamento(clone, comparator)){
 			System.out.println(string + " - nao ordenou.");
 		}
@@ -89,7 +89,7 @@ public abstract class Testes {
 		endTime = System.nanoTime();
 		duration = (endTime - beginTime) / 1000000;
 		string = SortingAlgorithms.mergeSortSigla() + ", " + comparator.toString() + ", " + array.length + ", " + duration;
-		file.write(string + "\n");
+		file.write(string + "\r\n");
 		if (!testeDeOrdenamento(clone, comparator)){
 			System.out.println(string + " - nao ordenou.");
 		}
@@ -102,7 +102,7 @@ public abstract class Testes {
 		endTime = System.nanoTime();
 		duration = (endTime - beginTime) / 1000000;
 		string = SortingAlgorithms.quickSortRandomizadoSigla() + ", " + comparator.toString() + ", " + array.length + ", " + duration;
-		file.write(string + "\n");
+		file.write(string + "\r\n");
 		if (!testeDeOrdenamento(clone, comparator)){
 			System.out.println(string + " - nao ordenou.");
 		}
@@ -115,7 +115,7 @@ public abstract class Testes {
 		endTime = System.nanoTime();
 		duration = (endTime - beginTime) / 1000000;
 		string = SortingAlgorithms.radixSortSigla() + ", " + comparator.toString() + ", " + array.length + ", " + duration;
-		file.write(string + "\n");
+		file.write(string + "\r\n");
 		if (!testeDeOrdenamento(clone, comparator)){
 			System.out.println(string + " - nao ordenou.");
 		}
@@ -128,7 +128,7 @@ public abstract class Testes {
 		endTime = System.nanoTime();
 		duration = (endTime - beginTime) / 1000000;
 		string = SortingAlgorithms.shellSortSigla() + ", " + comparator.toString() + ", " + array.length + ", " + duration;
-		file.write(string + "\n");
+		file.write(string + "\r\n");
 		if (!testeDeOrdenamento(clone, comparator)){
 			System.out.println(string + " - nao ordenou.");
 		}
