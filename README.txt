@@ -6,3 +6,12 @@ Bibliotecas utilizadas nesse projeto:
 
 Challenger Stats usa a biblioteca Riot-api-java (https://github.com/rithms/riot-api-java).
 
+
+Como compilar o Challenger Stats
+
+Na pasta do projeto abra "arquivos" extraia "dados.part01.rar" para a pasta dados na pata do projeto (se ela não existir, crie uma).
+
+Com o terminal aberto na pasta do projeto, execute o comando:
+
+ javac -d target -cp "library/*;src/" src/teste/Teste1.java
+ java -cp "library/*;target/" teste.Teste1
