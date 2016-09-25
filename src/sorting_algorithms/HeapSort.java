@@ -2,21 +2,15 @@ package sorting_algorithms;
 
 import java.util.Comparator;
 
-class HeapSort {
+public class HeapSort extends SortingAlgorithm {
 	public static final String sigla = "HPST";
 	
 	private static int heap_size;
 	private static int esq;
 	private static int dir;
 	private static int maior;
-		
-	public static <T> void troca(T[] array,int i,int j){
-		T aux=array[i];
-		array[i]=array[j];
-		array[j]=aux;	
-	}
 	
-	public static <T> void maxheapify(T[] array, int i, Comparator <T> comparator){
+	private static <T> void maxHeapify(T[] array, int i, Comparator <T> comparator){
 		esq=2*i;
 		dir=2*i+1;
 		
@@ -29,24 +23,25 @@ class HeapSort {
 			maior=dir;
 		
 		if(maior!=i){
-			troca(array,i,maior);
-			maxheapify(array,maior,comparator);
+			swap(array,i,maior);
+			maxHeapify(array,maior,comparator);
 		}	
 	}
 	
-	public static <T> void buildheap(T[] array, Comparator <T> comparator){
+	private static <T> void buildHeap(T[] array, Comparator <T> comparator){
 		heap_size=array.length-1;
 		for(int i=heap_size/2; i>=0; i--){
-			maxheapify(array,i,comparator);
+			maxHeapify(array,i,comparator);
 		}	
 	}
+	
 	public static <T> void sort(T[] array, Comparator<T> comparator){
-		buildheap(array,comparator);
+		buildHeap(array,comparator);
 		
 		for(int i=heap_size; i>0; i--){
-			troca(array,0,i);
+			swap(array,0,i);
 			heap_size-=1;
-			maxheapify(array,0,comparator);
+			maxHeapify(array,0,comparator);
 		}
 	}
 }

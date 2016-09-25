@@ -13,5 +13,5 @@ Na pasta do projeto abra "arquivos" extraia "dados.part01.rar" para a pasta dado
 
 Com o terminal aberto na pasta do projeto, execute o comando:
 
- javac -d target -cp "library/*;src/" src/teste/Teste1.java
- java -cp "library/*;target/" teste.Teste1
+ javac -d target -cp "library/*;src/" src/TestesDeDesempenho.java
+ java -cp "library/*;target/" TestesDeDesempenho
