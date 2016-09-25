@@ -10,6 +10,14 @@ public class HeapSort extends SortingAlgorithm {
 	private static int dir;
 	private static int maior;
 	
+	public HeapSort(){
+		super(sigla);
+	}
+	
+	public <T> void sort_array(T[] array, Comparator<T> comparator){
+		sort(array,comparator);
+	}
+	
 	private static <T> void maxHeapify(T[] array, int i, Comparator <T> comparator){
 		esq=2*i;
 		dir=2*i+1;
