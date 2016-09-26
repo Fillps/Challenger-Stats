@@ -3,7 +3,7 @@ package sorting_algorithms;
 import java.util.Comparator;
 
 public class RadixSort extends SortingAlgorithm {
-	public static final String sigla = "BBST";
+	public static final String sigla = "RMSD";
 
 	public RadixSort(){
 		super(sigla);

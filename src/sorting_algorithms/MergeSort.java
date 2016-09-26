@@ -3,7 +3,7 @@ package sorting_algorithms;
 import java.util.Comparator;
 
 public class MergeSort extends SortingAlgorithm {
-	public static final String sigla = "RMSD";
+	public static final String sigla = "MGST";
 
 	public MergeSort(){
 		super(sigla);
