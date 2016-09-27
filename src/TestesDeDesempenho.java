@@ -12,22 +12,22 @@ import sorting_algorithms.HeapSort;
 
 
 /*
- * ETAPA II: TESTES DE DESEMPENHO (ATÉ 02/10/2016)
+ * ETAPA II: TESTES DE DESEMPENHO (ATE 02/10/2016)
  * 
- * Desenvolvimento e teste de desempenho de algoritmos de classificação
- * Preparar o subconjunto de dados, criando duas versões (ambas ordenadas de maneira decrescente): 
- * uma ordenada pelo atributo numérico e outra ordenada pelo atributo categórico. Salve em arquivos 
- * para poder carregar esses dados para depois não precisar refazer a ordenação.
+ * Desenvolvimento e teste de desempenho de algoritmos de classificacao
+ * Preparar o subconjunto de dados, criando duas versoes (ambas ordenadas de maneira decrescente): 
+ * uma ordenada pelo atributo numerico e outra ordenada pelo atributo categorico. Salve em arquivos 
+ * para poder carregar esses dados para depois nao precisar refazer a ordenacao.
  * Implementar pelo menos os seguintes algoritmos:
  * 		Insertion Sort com Busca Linear (ISBL)
- *		Insertion Sort com Busca Binária (ISBB)
+ *		Insertion Sort com Busca Binaria (ISBB)
  * 		Shell Sort (SHST)
  * 		Bubble Sort (BBST)
  * 		Quick Sort Randomizado (QSRM)
  * 		Merge Sort (MGST)
  * 		Heap Sort (HPST)
  * 		Radix Sort MSD (RMSD) 
- * Para todos os algoritmos, contabilizar o tempo de execução para pelo menos 3 tamanhos de array, tanto numérico quanto categórico:
+ * Para todos os algoritmos, contabilizar o tempo de execucao para pelo menos 3 tamanhos de array, tanto numerico quanto categorico:
  * 100 elementos
  * 1.000 elementos
  * 10.000 elementos

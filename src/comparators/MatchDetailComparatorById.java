@@ -16,7 +16,7 @@ public class MatchDetailComparatorById implements ComparatorDigitCatcher<MatchDe
 	}
 	
 	@Override
-	public int getValueDigit(MatchDetail a, int digitIndex){
+	public int getDigitValue(MatchDetail a, int digitIndex){
 		long id = a.getMatchId();
 		String id_string = String.valueOf(id);
 		try{
@@ -48,7 +48,7 @@ class MatchDetailComparatorByIdReversed extends MatchDetailComparatorById {
 		return (super.compare(a, b))*(-1);
 	}
 	
-	public int getValueDigit(MatchDetail a, int digitIndex){
-		return (9 - (super.getValueDigit(a, digitIndex)));
+	public int getDigitValue(MatchDetail a, int digitIndex){
+		return (9 - (super.getDigitValue(a, digitIndex)));
 	}
 }

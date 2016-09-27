@@ -29,7 +29,7 @@ public class MatchDetailComparatorByFirstPlayerName implements ComparatorDigitCa
 	}
 	
 	@Override
-	public int getValueDigit(MatchDetail a, int digitIndex){
+	public int getDigitValue(MatchDetail a, int digitIndex){
 		try{
 			String name = a.getParticipantIdentities().get(0).getPlayer().getSummonerName();
 			char digit = name.charAt(digitIndex);
@@ -62,7 +62,7 @@ class MatchDetailComparatorByFirstPlayerNameReversed extends MatchDetailComparat
 		return (super.compare(a, b))*(-1);
 	}
 	 
-	public int getValueDigit(MatchDetail a, int digitIndex){
-		return (65536 - (super.getValueDigit(a, digitIndex)));
+	public int getDigitValue(MatchDetail a, int digitIndex){
+		return (Character.MAX_VALUE - (super.getDigitValue(a, digitIndex)));
 	}
 }
