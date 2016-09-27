@@ -17,8 +17,12 @@ public class MatchDetailComparatorByRegion implements ComparatorDigitCatcher<Mat
 	@Override
 	public int getValueDigit(MatchDetail a, int digitIndex){
 		String name = a.getRegion();
-		char digit = name.charAt(digitIndex);
-		return Character.getNumericValue(digit);
+		try{
+			char digit = name.charAt(digitIndex);
+			return Character.getNumericValue(digit);
+		} catch (IndexOutOfBoundsException e) {
+			return -1;
+		}
 	}
 	
 	@Override

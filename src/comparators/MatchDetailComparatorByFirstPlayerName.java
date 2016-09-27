@@ -28,8 +28,12 @@ public class MatchDetailComparatorByFirstPlayerName implements ComparatorDigitCa
 		if (a.getParticipantIdentities().get(0).getPlayer()==null)
 			return -1;
 		String name = a.getParticipantIdentities().get(0).getPlayer().getSummonerName();
+		try{
 		char digit = name.charAt(digitIndex);
 		return Character.getNumericValue(digit);
+		} catch (IndexOutOfBoundsException e) {
+			return -1;
+		}
 	}
 	
 	@Override

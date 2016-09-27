@@ -19,8 +19,13 @@ public class MatchDetailComparatorById implements ComparatorDigitCatcher<MatchDe
 	public int getValueDigit(MatchDetail a, int digitIndex){
 		long id = a.getMatchId();
 		String id_string = String.valueOf(id);
-		char digit = id_string.charAt(digitIndex);
-		return Character.getNumericValue(digit);
+		try{
+			char digit = id_string.charAt(digitIndex);
+			return Character.getNumericValue(digit);
+		} catch (IndexOutOfBoundsException e) {
+			return -1;
+		}
+		
 	}
 	
 	@Override
