@@ -34,5 +34,21 @@ public class MatchDetailComparatorById implements ComparatorDigitCatcher<MatchDe
 		int length = String.valueOf(id).length();
 		return length;
 	}
+	
+	@Override
+	public ComparatorDigitCatcher<MatchDetail> reversedDigitCatcher(){
+		return new MatchDetailComparatorByIdReversed();
+	}
 
+}
+
+class MatchDetailComparatorByIdReversed extends MatchDetailComparatorById {
+	
+	public int compare(MatchDetail a, MatchDetail b) {
+		return (super.compare(a, b))*(-1);
+	}
+	
+	public int getValueDigit(MatchDetail a, int digitIndex){
+		return (9 - (super.getValueDigit(a, digitIndex)));
+	}
 }

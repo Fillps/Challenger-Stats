@@ -19,7 +19,7 @@ public class MatchDetailComparatorByRegion implements ComparatorDigitCatcher<Mat
 		String name = a.getRegion();
 		try{
 			char digit = name.charAt(digitIndex);
-			return Character.getNumericValue(digit);
+			return (int) digit;
 		} catch (IndexOutOfBoundsException e) {
 			return -1;
 		}
@@ -28,5 +28,22 @@ public class MatchDetailComparatorByRegion implements ComparatorDigitCatcher<Mat
 	@Override
 	public int getLength(MatchDetail a){
 		return a.getRegion().length();
+	}
+
+	@Override
+	public ComparatorDigitCatcher<MatchDetail> reversedDigitCatcher(){
+		return new MatchDetailComparatorByRegionReversed();
+	}
+
+}
+
+class MatchDetailComparatorByRegionReversed extends MatchDetailComparatorByRegion {
+
+	public int compare(MatchDetail a, MatchDetail b) {
+		return (super.compare(a, b))*(-1);
+	}
+ 
+	public int getValueDigit(MatchDetail a, int digitIndex){
+		return (65536 - (super.getValueDigit(a, digitIndex)));
 	}
 }

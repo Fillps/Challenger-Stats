@@ -7,15 +7,20 @@ public class MatchDetailComparatorByFirstPlayerName implements ComparatorDigitCa
 	
 	@Override
     public int compare(MatchDetail a, MatchDetail b) {
-		if (a.getParticipantIdentities().get(0).getPlayer()==null && b.getParticipantIdentities().get(0).getPlayer()==null)
-			return 0;
-		else if (a.getParticipantIdentities().get(0).getPlayer()==null)
-			return -1;
-		else if (b.getParticipantIdentities().get(0).getPlayer()==null)
-			return 1;
-        String nameA = a.getParticipantIdentities().get(0).getPlayer().getSummonerName();
-        String nameB = b.getParticipantIdentities().get(0).getPlayer().getSummonerName();
-		return nameA.compareTo(nameB);
+		int comparison;
+		try {
+			String nameA = a.getParticipantIdentities().get(0).getPlayer().getSummonerName();
+			String nameB = b.getParticipantIdentities().get(0).getPlayer().getSummonerName();
+			comparison = nameA.compareTo(nameB);
+		} catch (NullPointerException e){
+			if (a.getParticipantIdentities().get(0).getPlayer()==null && b.getParticipantIdentities().get(0).getPlayer()==null)
+				comparison = 0;
+			else if (a.getParticipantIdentities().get(0).getPlayer()==null)
+				comparison = -1;
+			else
+				comparison = 1;
+		}
+		return comparison;
     }
 	
 	@Override
@@ -25,22 +30,39 @@ public class MatchDetailComparatorByFirstPlayerName implements ComparatorDigitCa
 	
 	@Override
 	public int getValueDigit(MatchDetail a, int digitIndex){
-		if (a.getParticipantIdentities().get(0).getPlayer()==null)
-			return -1;
-		String name = a.getParticipantIdentities().get(0).getPlayer().getSummonerName();
 		try{
-		char digit = name.charAt(digitIndex);
-		return Character.getNumericValue(digit);
-		} catch (IndexOutOfBoundsException e) {
+			String name = a.getParticipantIdentities().get(0).getPlayer().getSummonerName();
+			char digit = name.charAt(digitIndex);
+			return (int) digit;
+		} catch (IndexOutOfBoundsException | NullPointerException e) {
 			return -1;
 		}
 	}
 	
 	@Override
 	public int getLength(MatchDetail a){
-		if (a.getParticipantIdentities().get(0).getPlayer()==null)
+		try {
+			return a.getParticipantIdentities().get(0).getPlayer().getSummonerName().length();
+		} catch (NullPointerException e){
 			return -1;
-		return a.getParticipantIdentities().get(0).getPlayer().getSummonerName().length();
+		}
+		
 	}
 	
+	@Override
+	public ComparatorDigitCatcher<MatchDetail> reversedDigitCatcher(){
+		return new MatchDetailComparatorByFirstPlayerNameReversed();
+	}
+	
+}
+
+class MatchDetailComparatorByFirstPlayerNameReversed extends MatchDetailComparatorByFirstPlayerName {
+	
+	public int compare(MatchDetail a, MatchDetail b) {
+		return (super.compare(a, b))*(-1);
+	}
+	 
+	public int getValueDigit(MatchDetail a, int digitIndex){
+		return (65536 - (super.getValueDigit(a, digitIndex)));
+	}
 }
