@@ -1,8 +1,8 @@
 
 
 import java.io.IOException;
-import java.util.Comparator;
 
+import comparators.ComparatorDigitCatcher;
 import comparators.Comparators;
 import data.WriterAndReader;
 import teste.Testes;
@@ -45,24 +45,26 @@ public class TestesDeDesempenho {
 	
 	public static void main(String[] args) throws IOException{
 		String resultados = "dados\\resultados_challenger_stats.txt";
-		String local = "dados\\MatchDetail.V6_17.Reverse.Id.array";
-		Comparator<MatchDetail> comparator = Comparators.matchDetailById();
+		String local1 = "dados\\MatchDetail.V6_17.Reverse.Id.array.ser";
+		String local2 = "dados\\MatchDetail.V6_17.Reverse.FirstPlayerName.array.ser";
+		ComparatorDigitCatcher<MatchDetail> comparator1 = Comparators.matchDetailById();
+		ComparatorDigitCatcher<MatchDetail> comparator2 = Comparators.matchDetailByFirstPlayerName();
 		
 		System.out.println("Iniciando testes do array:\n"
-				+ "1 - Numerico \"dados\\MatchDetail.V6_17.Reverse.Id.array\"\n"
-				+ "2 - Categorico \"dados\\MatchDetail.V6_17.Reverse.FirstPlayerName.array\"");
+				+ "1 - Numerico \"" + local1 + "\"\n"
+				+ "2 - Categorico \"" + local2 + "\"");
 		for (int k = 1; k < 3; k++){
 			System.out.println("Iniciando leitura do arquivo " + k + ".");
-			MatchDetail[] array = WriterAndReader.read(local);
+			MatchDetail[] array = WriterAndReader.read(local1);
 			System.out.println("Leitura concluida.");
 			
-			if (Testes.testeDeOrdenamento(array, comparator.reversed()))
+			if (Testes.testeDeOrdenamento(array, comparator1.reversed()))
 				System.out.println("O array ja esta inversamente ordenado.");
 			else {
 				System.out.println("O array nao esta inversamente ordenado. Iniciando ordenacao inversa do array.");
-				HeapSort.sort(array, comparator.reversed());
-				System.out.println("Salvando array em \"" + local + ".Reversed\".");
-				WriterAndReader.write(array, (local + ".Reversed"));
+				HeapSort.sort(array, comparator1.reversed());
+				System.out.println("Salvando array em \"" + local1 + ".Reversed\".");
+				WriterAndReader.write(array, (local1 + ".Reversed"));
 				System.out.println("Salvo.");
 			}
 			
@@ -85,14 +87,14 @@ public class TestesDeDesempenho {
 			    a3[i]=array[i];
 			
 			System.out.println("Inicializando testes de desempenho.");
-			Testes.testeDeDesempenho(a1, comparator, resultados);
-			Testes.testeDeDesempenho(a2, comparator, resultados);
-			Testes.testeDeDesempenho(a3, comparator, resultados);
-			Testes.testeDeDesempenho(array, comparator, resultados);
+			Testes.testeDeDesempenho(a1, comparator1, resultados);
+			Testes.testeDeDesempenho(a2, comparator1, resultados);
+			Testes.testeDeDesempenho(a3, comparator1, resultados);
+			Testes.testeDeDesempenho(array, comparator1, resultados);
 			System.out.println("Teste " + k + " concluido. Resultados salvos em \"" + resultados + "\".");
 		
-			local = "dados\\MatchDetail.V6_17.Reverse.FirstPlayerName.array";
-			comparator = Comparators.matchDetailByFirstPlayerName();
+			local1 = local2;
+			comparator1 = comparator2;
 		}
 	}
 }

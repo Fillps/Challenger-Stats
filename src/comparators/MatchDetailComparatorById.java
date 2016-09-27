@@ -1,10 +1,9 @@
 package comparators;
 
-import java.util.Comparator;
 
 import net.rithms.riot.api.endpoints.match.dto.MatchDetail;
 
-public class MatchDetailComparatorById implements Comparator<MatchDetail> {
+public class MatchDetailComparatorById implements ComparatorDigitCatcher<MatchDetail> {
 	public static final String tipo = "numerico";
 	
     @Override
@@ -15,4 +14,20 @@ public class MatchDetailComparatorById implements Comparator<MatchDetail> {
 	public String toString(){
 		return tipo;
 	}
+	
+	@Override
+	public int getValueDigit(MatchDetail a, int digitIndex){
+		long id = a.getMatchId();
+		String id_string = String.valueOf(id);
+		char digit = id_string.charAt(digitIndex);
+		return Character.getNumericValue(digit);
+	}
+	
+	@Override
+	public int getLength(MatchDetail a){
+		long id = a.getMatchId();
+		int length = String.valueOf(id).length();
+		return length;
+	}
+
 }

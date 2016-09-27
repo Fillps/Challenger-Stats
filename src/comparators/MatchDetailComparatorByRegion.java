@@ -1,10 +1,8 @@
 package comparators;
 
-import java.util.Comparator;
-
 import net.rithms.riot.api.endpoints.match.dto.MatchDetail;
 
-public class MatchDetailComparatorByRegion implements Comparator<MatchDetail> {
+public class MatchDetailComparatorByRegion implements ComparatorDigitCatcher<MatchDetail> {
 	public static final String tipo = "categorico";
 	
 	@Override
@@ -14,5 +12,17 @@ public class MatchDetailComparatorByRegion implements Comparator<MatchDetail> {
 	@Override
 	public String toString(){
 		return tipo;
+	}
+	
+	@Override
+	public int getValueDigit(MatchDetail a, int digitIndex){
+		String name = a.getRegion();
+		char digit = name.charAt(digitIndex);
+		return Character.getNumericValue(digit);
+	}
+	
+	@Override
+	public int getLength(MatchDetail a){
+		return a.getRegion().length();
 	}
 }
