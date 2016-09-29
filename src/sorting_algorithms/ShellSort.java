@@ -35,3 +35,4 @@ public class ShellSort extends SortingAlgorithm {
             h = h / 2;
 		}
      }
+}
