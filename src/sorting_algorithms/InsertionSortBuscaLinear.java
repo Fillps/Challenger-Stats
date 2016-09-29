@@ -14,8 +14,15 @@ public class InsertionSortBuscaLinear extends SortingAlgorithm {
 	}
 	
 	public static <T> void sort(T[] array, Comparator<T> comparator){
-		/*
-		 * TODO
-		 */
+		 for(int i=1 ; i < array.length ; i++){
+			T chave = array[i];
+			int j = i-1;
+			while((j >= 0) && comparator.compare(array[j], chave) > 0){
+				array[j+1] = array[j];
+				j = j-1;
+			}
+			array[j+1] = chave;
+		 }
 	}
+	
 }
