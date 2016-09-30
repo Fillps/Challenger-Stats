@@ -10,8 +10,10 @@ public class IntegerComparatorDigitCatcher implements ComparatorDigitCatcher<Int
 	@Override
 	public int getDigitValue(Integer n, int digitIndex, int maxLength) {
 		String number = String.valueOf(n);
-		while(number.length()<maxLength)
-			number = "0" + number;
+		String string_0 = new String(new char[maxLength -number.length()]).replace('\0','0');
+		
+		number = string_0 + number;
+		
 		try{
 			char digit = number.charAt(digitIndex);
 			return Character.getNumericValue(digit);

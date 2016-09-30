@@ -18,9 +18,11 @@ public class MatchDetailComparatorById implements ComparatorDigitCatcher<MatchDe
 	@Override
 	public int getDigitValue(MatchDetail a, int digitIndex, int maxLength){
 		long id = a.getMatchId();
-		String id_string = String.valueOf(id);
-		while(id_string.length()<maxLength)
-			id_string = "0" + id_string;
+		String id_string = String.valueOf(id);		
+		String string_0 = new String(new char[maxLength -id_string.length()]).replace('\0','0');
+		
+		id_string = string_0 + id_string;
+		
 		try{
 			char digit = id_string.charAt(digitIndex);
 			return Character.getNumericValue(digit);
