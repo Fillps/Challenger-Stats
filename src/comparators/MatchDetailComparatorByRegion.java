@@ -15,7 +15,7 @@ public class MatchDetailComparatorByRegion implements ComparatorDigitCatcher<Mat
 	}
 	
 	@Override
-	public int getDigitValue(MatchDetail a, int digitIndex){
+	public int getDigitValue(MatchDetail a, int digitIndex, int maxLength){
 		String name = a.getRegion();
 		try{
 			char digit = name.charAt(digitIndex);
@@ -43,7 +43,7 @@ class MatchDetailComparatorByRegionReversed extends MatchDetailComparatorByRegio
 		return (super.compare(a, b))*(-1);
 	}
  
-	public int getDigitValue(MatchDetail a, int digitIndex){
-		return (Character.MAX_VALUE - (super.getDigitValue(a, digitIndex)));
+	public int getDigitValue(MatchDetail a, int digitIndex, int maxLength){
+		return (Character.MAX_VALUE - (super.getDigitValue(a, digitIndex, maxLength)));
 	}
 }

@@ -17,6 +17,10 @@ public class Comparators {
 		return new MatchDetailComparatorByFirstPlayerName();
 	}
 	
+	public static IntegerComparatorDigitCatcher integerComparatorDigitCatcher(){
+		return new IntegerComparatorDigitCatcher();
+	}
+	
 }
 
 
