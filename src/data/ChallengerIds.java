@@ -91,47 +91,6 @@ public class ChallengerIds implements Serializable{
 		}
 		this.listChallengerIds = listIds;
 		
-		/*RiotApiAsync apiAsync = api.getAsyncApi();
-		
-		List<Queue<Long>> listIds= new ArrayList<Queue<Long>>();
-		for (int i = 0 ; i<this.regions.size(); i++){
-			AsyncRequest ChallengerLeague = apiAsync.getChallengerLeague(this.regions.get(i), QueueType.RANKED_SOLO_5x5);
-			ChallengerLeague.addListeners(new RequestAdapter() {
-				@Override
-				public void onRequestSucceeded(AsyncRequest request) {
-					League challenger = request.getDto();
-					List<LeagueEntry> challengerEntry = challenger.getEntries();
-					Iterator<LeagueEntry> it = challengerEntry.iterator();
-					LeagueEntry entry;
-					Queue<Long> ids = new LinkedList<Long>();
-					while(it.hasNext()){
-					    entry = it.next();
-					   	ids.add(Long.valueOf(entry.getPlayerOrTeamId()));
-					}
-					listIds.add(ids);		
-				}
-				@Override
-				public void onRequestFailed(RiotApiException e) {
-					RiotApi.log.log(Level.SEVERE, "Waiting Interrupted", e);
-					Thread.currentThread().interrupt();
-				}
-			});
-		}
-		try {			
-			Thread.sleep(sleepTime);
-		} catch (InterruptedException ex){
-			ex.printStackTrace();
-			throw new RuntimeException(ex);
-		}
-		try {
-			// Wait for all asynchronous requests to finish
-			apiAsync.awaitAll();
-		} catch (InterruptedException e) {
-			// We can use the Api's logger
-			RiotApi.log.log(Level.SEVERE, "Waiting Interrupted", e);
-		}
-		
-		this.listChallengerIds = listIds;*/
 	}
 	
 	

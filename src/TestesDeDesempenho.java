@@ -8,7 +8,7 @@ import data.WriterAndReader;
 import teste.Testes;
 
 import net.rithms.riot.api.endpoints.match.dto.*;
-import sorting_algorithms.HeapSort;
+import sorting_algorithms.MergeSort;
 
 
 /*
@@ -44,27 +44,26 @@ import sorting_algorithms.HeapSort;
 public class TestesDeDesempenho {
 	
 	public static void main(String[] args) throws IOException{
-		String resultados = "dados\\resultados_challenger_stats.txt";
-		String local1 = "dados\\MatchDetail.V6_17.Reverse.Id.array.ser";
-		String local2 = "dados\\MatchDetail.V6_17.Reverse.FirstPlayerName.array.ser";
+		String resultados = "arquivos\\resultados_challenger_stats.txt";
+		String local1 = "arquivos\\MatchDetail.V6_17.Reverse.Id.array.ser";
+		String local2 = "arquivos\\MatchDetail.V6_17.Reverse.FirstPlayerName.array.ser";
 		ComparatorDigitCatcher<MatchDetail> comparator1 = Comparators.matchDetailById();
 		ComparatorDigitCatcher<MatchDetail> comparator2 = Comparators.matchDetailByFirstPlayerName();
 		
 		System.out.println("Iniciando testes do array:\n"
-				+ "1 - Numerico \"" + local1 + "\"\n"
-				+ "2 - Categorico \"" + local2 + "\"");
+				+ "1 - " + comparator1.toString() + " \"" + local1 + "\"\n"
+				+ "2 - " + comparator2.toString() + " \"" + local2 + "\"");
 		for (int k = 1; k < 3; k++){
 			System.out.println("Iniciando leitura do arquivo " + k + ".");
 			MatchDetail[] array = WriterAndReader.read(local1);
 			System.out.println("Leitura concluida.");
-			
-			if (Testes.testeDeOrdenamento(array, comparator1.reversed()))
+			if (Testes.testeDeOrdenamento(array, comparator1.reversedDigitCatcher()))
 				System.out.println("O array ja esta inversamente ordenado.");
 			else {
 				System.out.println("O array nao esta inversamente ordenado. Iniciando ordenacao inversa do array.");
-				HeapSort.sort(array, comparator1.reversed());
-				System.out.println("Salvando array em \"" + local1 + ".Reversed\".");
-				WriterAndReader.write(array, (local1 + ".Reversed"));
+				MergeSort.sort(array, comparator1.reversedDigitCatcher());
+				System.out.println("Salvando array em \"" + local1.substring(0, local1.length() - 4) + ".reversed.ser\".");
+				WriterAndReader.write(array, (local1.substring(0, local1.length() - 4) + ".reversed.ser"));
 				System.out.println("Salvo.");
 			}
 			

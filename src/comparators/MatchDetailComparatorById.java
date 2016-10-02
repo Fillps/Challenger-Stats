@@ -17,14 +17,9 @@ public class MatchDetailComparatorById implements ComparatorDigitCatcher<MatchDe
 	
 	@Override
 	public int getDigitValue(MatchDetail a, int digitIndex, int maxLength){
-		long id = a.getMatchId();
-		String id_string = String.valueOf(id);		
-		String string_0 = new String(new char[maxLength -id_string.length()]).replace('\0','0');
-		
-		id_string = string_0 + id_string;
-		
+		String number = String.format("%0" + String.valueOf(maxLength) + "d", a.getMatchId());
 		try{
-			char digit = id_string.charAt(digitIndex);
+			char digit = number.charAt(digitIndex);
 			return Character.getNumericValue(digit);
 		} catch (IndexOutOfBoundsException e) {
 			return -1;
@@ -54,5 +49,9 @@ class MatchDetailComparatorByIdReversed extends MatchDetailComparatorById {
 	
 	public int getDigitValue(MatchDetail a, int digitIndex, int maxLength){
 		return (9 - (super.getDigitValue(a, digitIndex, maxLength)));
+	}
+	
+	public ComparatorDigitCatcher<MatchDetail> reversedDigitCatcher() {
+		return new MatchDetailComparatorById();
 	}
 }

@@ -46,4 +46,8 @@ class MatchDetailComparatorByRegionReversed extends MatchDetailComparatorByRegio
 	public int getDigitValue(MatchDetail a, int digitIndex, int maxLength){
 		return (Character.MAX_VALUE - (super.getDigitValue(a, digitIndex, maxLength)));
 	}
+	
+	public ComparatorDigitCatcher<MatchDetail> reversedDigitCatcher() {
+		return new MatchDetailComparatorByRegion();
+	}
 }

@@ -1,19 +1,21 @@
 package comparators;
 
 public class IntegerComparatorDigitCatcher implements ComparatorDigitCatcher<Integer> {
-
+	public static final String tipo = "numerico";
+	
 	@Override
 	public int compare(Integer a, Integer b) {
 		return a.compareTo(b);
 	}
+	
+	@Override
+	public String toString(){
+		return tipo;
+	}
 
 	@Override
 	public int getDigitValue(Integer n, int digitIndex, int maxLength) {
-		String number = String.valueOf(n);
-		String string_0 = new String(new char[maxLength -number.length()]).replace('\0','0');
-		
-		number = string_0 + number;
-		
+		String number = String.format("%0" + String.valueOf(maxLength) + "d", n);
 		try{
 			char digit = number.charAt(digitIndex);
 			return Character.getNumericValue(digit);
@@ -43,5 +45,9 @@ class IntegerComparatorDigitCatcherReversed extends IntegerComparatorDigitCatche
 	
 	public int getDigitValue(Integer a, int digitIndex, int maxLength){
 		return (9 - (super.getDigitValue(a, digitIndex, maxLength)));
+	}
+	
+	public ComparatorDigitCatcher<Integer> reversedDigitCatcher() {
+		return new IntegerComparatorDigitCatcher();
 	}
 }
