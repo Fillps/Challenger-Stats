@@ -73,7 +73,7 @@ Essas entidades irão guardar as informações de cada um desses elementos, por 
 
 ###Executar testes de desempenho:
 
-Na pasta "arquivos" extraia *dados.part01.rar*.
+Na pasta ***arquivos*** extraia ***dados.part01.rar***.
 
 Com o terminal aberto na pasta do projeto, execute os comandos:
 ```
