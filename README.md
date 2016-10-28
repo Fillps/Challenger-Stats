@@ -4,12 +4,6 @@
 
 Nosso trabalho opera com dados do jogo [League of Legends](http://br.leagueoflegends.com/), no qual as partidas são jogadas com dois times de cinco jogadores, e cada jogador escolhe um campeão/personagem disponível. Dependendo da partida, o jogador pode usar itens, runas, talentos e habilidades diferentes para ajudá-lo. O que o nosso programa se propõe a fazer é criar um banco de dados dos conjuntos de itens, runas, talentos e habilidades para cada campeão disponível no jogo, com base na porcentagem de vitórias e frequência de uso entre os melhores jogadores.
 
-###Pré-requesitos:
-
-Challenger Stats precisa de Java 8 e as seguintes bibliotecas:
-
-  - [Riot-api-java](https://github.com/rithms/riot-api-java)
-  - [Google Gson](https://github.com/google/gson) - Parte do requesito para usar a biblioteca Riot-api-java.
 
 ###Como conseguimos os dados?
 
@@ -51,8 +45,9 @@ O programa terá as seguintes funcionalidades:
   - **Testes:** consiste na fase de teste do programa que foi implementado. Nessa fase serão feitos vários testes a fim de encontrar erros no programa e verificar melhorias no mesmo. O tempo médio dessa atividade é uma semana.
   - **Melhorias:** consiste na fase de implementação de melhorias do programa que foi implementado e testado. O tempo médio dessa atividade é uma semana.
 
-###**Análise e escolha dos algoritmos:
-Após conseguir os dados das partidas, armazenamos em um array e o serializamos, salvando em disco. Como parte do trabalho proposto, desenvolvemos e testamos o desempenhos dos seguintes algoritmos de ordenação:
+###Análise e escolha dos algoritmos:
+
+Como parte do trabalho proposto, desenvolvemos e testamos o desempenhos dos seguintes algoritmos de ordenação:
 
   -	Insetion Sort com Busca Linear
   -	Insertion Sort com Busca Binária
@@ -90,6 +85,13 @@ Como a nossa aplicação se propõe a oferecer estatísticas gerais de campeões
 
 
 ##Como executar o Challenger Stats
+
+###Pré-requesitos:
+
+Challenger Stats precisa de Java 8 e as seguintes bibliotecas:
+
+  - [Riot-api-java](https://github.com/rithms/riot-api-java)
+  - [Google Gson](https://github.com/google/gson) - Parte do requesito para usar a biblioteca Riot-api-java.
 
 ###Executar testes de desempenho:
 
