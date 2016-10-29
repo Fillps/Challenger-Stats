@@ -32,18 +32,19 @@ O programa terá as seguintes funcionalidades:
 
   - **Java:** Java é uma linguagem de programação interpretada orientada a objetos que é compilada e executado por uma máquina virtual. Uma das características e a portabilidade e independência de plataforma - "escreva uma vez, execute em qualquer lugar" ("write once, run anywhere"). Devido a suas similaridades com C/C++ e ao desejo de aprender uma nova linguagem de programação, escolhemos Java para esse projeto.
   - **Biblioteca [Riot api java](https://github.com/rithms/riot-api-java):** Um método simples de usa a Riot API para Java. Esta biblioteca faz com que seja fácil de reunir e usar dados de League of Legends em seus aplicativos. 
-  - **[Eclipse](https://eclipse.org/):** Eclipse é um IDE para desenvolvimento Java, porém suporta várias outras linguagens a partir de plugins como C/C++,PHP,ColdFusion, Python, Scala e plataforma Android. Foi escolhido como IDE do projeto para a facilidade de uso e organizaçao.
+  - **[Eclipse](https://eclipse.org/):** Eclipse é um IDE para desenvolvimento Java, porém suporta várias outras linguagens a partir de plugins como C/C++,PHP,ColdFusion, Python, Scala e plataforma Android. Foi escolhido como IDE do projeto para a facilidade de uso e organização.
 
 
 ###Atividades
 
-  - **Aprendizagem a linguagem de programação consiste em aprender a linguagem Java, que foi a linguagem escolhida para a implementação do trabalho. O tempo médio dessa atividade é duas semanas. 
+  - **Aprendizagem a linguagem de programação:** consiste em aprender a linguagem Java, que foi a linguagem escolhida para a implementação do trabalho. O tempo médio dessa atividade é duas semanas. 
   - **Aprendizagem da Riot api java:** consiste em aprender a biblioteca que foi escolhida para manusear a Riot API e como obter os dados necessários dela. O tempo médio dessa atividade é uma semana.
   - **Análise e escolha dos algoritmos:** consiste em analisar o desempenho dos algoritmos de classificação e pesquisa vistos em aula e escolher quais são os melhores para resolver o problema proposto nesse trabalho. O tempo médio dessa atividade é algumas horas.
   - **Implementação do trabalho:** consiste em implementar o algoritmo para realizar a proposta do trabalho de armazenar e manipular dados de campeões. O tempo médio dessa atividade é um mês.
   - **Testes e Melhorias:** consiste em testar do programa implementado a fim de encontrar erros, e então aplicar melhorias ao programa, resolvendo falhas e aprimorando o desempenho. O tempo médio dessa atividade é uma semana.
 
 ###Análise e escolha dos algoritmos:
+
 Como parte do trabalho proposto, desenvolvemos e testamos os desempenhos dos seguintes algoritmos de ordenação:
 
   -	Insetion Sort com Busca Linear
