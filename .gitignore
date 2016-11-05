@@ -60,3 +60,10 @@ bin
 .settings
 pom.xml
 javac
+arquivos/MatchDetail.V6_17.Reverse.FirstPlayerName.array.ser
+*.ser
+arquivos/resultados_challenger_stats.txt
+arquivos/resultados_challenger_stats.txt
+library/gson-2.7.jar
+arquivos/resultados_challenger_stats.txt
+arquivos/resultados_challenger_stats.txt
