@@ -1,6 +1,6 @@
 package sorting_algorithms;
 
-import comparators.ComparatorDigitCatcher;
+import sorting_algorithms.comparators.ComparatorDigitCatcher;
 
 public abstract class SortingAlgorithmNonComparator {
 

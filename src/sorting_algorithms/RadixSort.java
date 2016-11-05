@@ -1,7 +1,7 @@
 package sorting_algorithms;
 
 
-import comparators.ComparatorDigitCatcher;
+import sorting_algorithms.comparators.ComparatorDigitCatcher;
 /*
  * Versao do Radix MSD que usa um vetor secundario array para separar por digitos.
  * Cria um valor chave para o indice, contando quantas vezes esse numero ocorreu.
