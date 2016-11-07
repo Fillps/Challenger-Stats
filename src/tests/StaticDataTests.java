@@ -1,18 +1,20 @@
 package tests;
 
-import riot_api.StaticData;
-import database.files.WriterAndReader;
+import model.database.data_structure.TrieExtended;
+import model.database.data_structure.TrieMapExtended;
+import model.database.files.WriterAndReader;
+import model.riot_api.StaticData;
 import net.rithms.riot.api.RiotApiException;
 import net.rithms.riot.api.endpoints.static_data.dto.Champion;
 
+import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 import java.net.MalformedURLException;
-
-
-import javax.imageio.ImageIO;
-import javax.swing.*;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -65,6 +67,27 @@ public class StaticDataTests {
         WriterAndReader.write(staticData, "arquivos/StaticData.ser");
     }
 
+    public static void saveNameOfChampionOnTrie(String local){
+        TrieExtended trie = new TrieExtended();
+        StaticData staticData = WriterAndReader.read("arquivos/StaticData.ser");
+        List<Champion> list = new ArrayList<Champion>(staticData.getChampionList().getData().values());
+        for (Champion i : list){
+            trie.add(i.getName());
+        }
+        WriterAndReader.write(trie, local);
+    }
+
+    public static void saveNameOfChampionOnTrieMap(String local){
+        TrieMapExtended<String, Integer> trieMap = new TrieMapExtended<>();
+        StaticData staticData = WriterAndReader.read("arquivos/StaticData.ser");
+        List<Champion> list = new ArrayList<Champion>(staticData.getChampionList().getData().values());
+        int i = 0;
+        for (Champion c : list){
+            trieMap.put(c.getName().toLowerCase(), i);
+            i++;
+        }
+        WriterAndReader.write(trieMap, local);
+    }
 
 
 }

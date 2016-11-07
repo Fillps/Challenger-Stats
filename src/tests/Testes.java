@@ -6,17 +6,17 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-import sorting_algorithms.comparators.ComparatorDigitCatcher;
-import sorting_algorithms.BubbleSort;
-import sorting_algorithms.HeapSort;
-import sorting_algorithms.InsertionSortBuscaBinaria;
-import sorting_algorithms.InsertionSortBuscaLinear;
-import sorting_algorithms.MergeSort;
-import sorting_algorithms.ShellSort;
-import sorting_algorithms.SortingAlgorithm;
-import sorting_algorithms.SortingAlgorithmNonComparator;
-import sorting_algorithms.RadixSort;
-import sorting_algorithms.QuickSortRandomizado;
+import model.sorting_algorithms.comparators.ComparatorDigitCatcher;
+import model.sorting_algorithms.BubbleSort;
+import model.sorting_algorithms.HeapSort;
+import model.sorting_algorithms.InsertionSortBuscaBinaria;
+import model.sorting_algorithms.InsertionSortBuscaLinear;
+import model.sorting_algorithms.MergeSort;
+import model.sorting_algorithms.ShellSort;
+import model.sorting_algorithms.SortingAlgorithm;
+import model.sorting_algorithms.SortingAlgorithmNonComparator;
+import model.sorting_algorithms.RadixSort;
+import model.sorting_algorithms.QuickSortRandomizado;
 
 public abstract class Testes {
 
