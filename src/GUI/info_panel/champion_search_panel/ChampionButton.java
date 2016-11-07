@@ -1,5 +1,6 @@
 package GUI.info_panel.champion_search_panel;
 
+import GUI.ButtonIntegerListener;
 import model.database.stats_structure.entity.Champion;
 
 import javax.imageio.ImageIO;
@@ -20,24 +21,29 @@ public class ChampionButton extends JPanel {
 
     private JButton button = new JButton();
     private int ID;
+    private ButtonIntegerListener buttonIntegerListener;
 
-    public ChampionButton(String name, ImageIcon icon, int id) throws IOException {
+    public ChampionButton(String name, ImageIcon icon, int id, ButtonIntegerListener buttonIntegerListener) throws IOException {
 
         ID = id;
         button.setIcon(icon);
         button.setText(name);
-
-        button.setBackground(Color.LIGHT_GRAY);
+        this.buttonIntegerListener = buttonIntegerListener;
+        button.setForeground(Color.LIGHT_GRAY);
+        button.setBackground(Color.BLACK);
         setBackground(Color.LIGHT_GRAY);
         button.setBorder(null);
+        //button.setContentAreaFilled(false);
+        button.setBounds(1,1,1,1);
         button.setVerticalAlignment(SwingConstants.NORTH);
         button.setVerticalTextPosition(SwingConstants.BOTTOM);
         button.setHorizontalTextPosition(SwingConstants.CENTER);
-        button.setIconTextGap(1);
+
+        button.setIconTextGap(0);
 
         Dimension dim = button.getPreferredSize();
-        dim.width = 78;
-        dim.height = 103;
+        dim.width = 80;
+        dim.height = 108;//103
         button.setMinimumSize(dim);
         button.setMaximumSize(dim);
 
@@ -47,11 +53,15 @@ public class ChampionButton extends JPanel {
         add(button, BorderLayout.CENTER);
 
         button.addActionListener(new ActionListener() {
+
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println(ID);
+                buttonIntegerListener.ButtonIntegerEvent(ID);
             }
         });
     }
 
+    public void setButtonIntegerListener(ButtonIntegerListener buttonIntegerListener) {
+        this.buttonIntegerListener = buttonIntegerListener;
+    }
 }

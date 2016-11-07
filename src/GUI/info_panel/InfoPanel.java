@@ -1,5 +1,6 @@
 package GUI.info_panel;
 
+import GUI.ButtonIntegerListener;
 import GUI.info_panel.champion_panel.ChampionPanel;
 import GUI.info_panel.champion_search_panel.ChampionSearchPanel;
 import controller.Controller;
@@ -16,21 +17,26 @@ import java.awt.*;
 public class InfoPanel extends JPanel{
 
     private ChampionPanel championPanel = new ChampionPanel();
-    private ChampionSearchPanel championSearchPanel = new ChampionSearchPanel();
+    private ChampionSearchPanel championSearchPanel;
     private ItemPanel itemPanel = new ItemPanel();
     private RunePanel runePanel = new RunePanel();
     private MasteryPanel masteryPanel = new MasteryPanel();
 
-    public InfoPanel(){
+    public InfoPanel(Controller controller){
         setLayout(new BorderLayout());
+
+        ButtonIntegerListener buttonIntegerListener = new ButtonIntegerListener() {
+            @Override
+            public void ButtonIntegerEvent(int buttonIndex) {
+                //// TODO: 07/11/2016
+            }
+        };
+        championSearchPanel = new ChampionSearchPanel(buttonIntegerListener, controller);
 
         add(championSearchPanel, BorderLayout.CENTER);
 
     }
 
-    public void setController(Controller controller){
-        championSearchPanel.setController(controller);
-    }
 
 
     public void addComponent(int index){

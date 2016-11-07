@@ -1,5 +1,7 @@
 package GUI.menu;
 
+import GUI.ButtonIntegerListener;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
@@ -17,7 +19,7 @@ public class MenuPanel extends JPanel {
     private MenuButton runesButton = new MenuButton("Runes");
     private MenuButton itemsButton = new MenuButton("Items");
 
-    private MenuListener menuListener;
+    private ButtonIntegerListener buttonIntegerListener;
 
     public MenuPanel(){
         Dimension dim = getPreferredSize();
@@ -40,30 +42,30 @@ public class MenuPanel extends JPanel {
 
         championSearchButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                menuListener.menuEventButton(0);
+                buttonIntegerListener.ButtonIntegerEvent(0);
             }
         });
         championsButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                menuListener.menuEventButton(1);
+                buttonIntegerListener.ButtonIntegerEvent(1);
             }
         });
 
         runesButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                menuListener.menuEventButton(2);
+                buttonIntegerListener.ButtonIntegerEvent(2);
             }
         });
 
         masterysButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                menuListener.menuEventButton(3);
+                buttonIntegerListener.ButtonIntegerEvent(3);
             }
         });
 
         itemsButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                menuListener.menuEventButton(4);
+                buttonIntegerListener.ButtonIntegerEvent(4);
             }
         });
         Border innerBorder = BorderFactory.createTitledBorder("menu");
@@ -71,8 +73,8 @@ public class MenuPanel extends JPanel {
         setBorder(BorderFactory.createCompoundBorder(outerBorder, innerBorder));
     }
 
-    public void setMenuListener(MenuListener menuListener){
-        this.menuListener = menuListener;
+    public void setButtonIntegerListener(ButtonIntegerListener buttonIntegerListener){
+        this.buttonIntegerListener = buttonIntegerListener;
     }
 }
 

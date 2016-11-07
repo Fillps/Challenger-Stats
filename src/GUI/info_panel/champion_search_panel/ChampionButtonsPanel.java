@@ -1,8 +1,11 @@
 package GUI.info_panel.champion_search_panel;
 
+import GUI.ButtonIntegerListener;
+import GUI.WrapLayout;
+import controller.Controller;
 import model.database.files.WriterAndReader;
+import model.database.stats_structure.entity.Champion;
 import model.riot_api.StaticData;
-import net.rithms.riot.api.endpoints.static_data.dto.Champion;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -19,60 +22,36 @@ import java.util.List;
  */
 public class ChampionButtonsPanel extends JPanel {
 
-
+    private Controller controller;
     private List<ChampionButton> buttonList = new ArrayList<ChampionButton>();
-    private GridBagConstraints gc = new GridBagConstraints();
 
-    public ChampionButtonsPanel() {
+    public ChampionButtonsPanel(ButtonIntegerListener buttonIntegerListener, Controller controller) {
 
-        setMaximumSize(new Dimension(500, 400));
+        this.controller = controller;
+        setLayout(new WrapLayout());
         setBackground(Color.LIGHT_GRAY);
-        StaticData staticData = WriterAndReader.read("arquivos/StaticData.ser");
-        List<net.rithms.riot.api.endpoints.static_data.dto.Champion> list;
-        list = new ArrayList<Champion>(staticData.getChampionList().getData().values());
 
-        int i = 0;
-        for(net.rithms.riot.api.endpoints.static_data.dto.Champion c : list){
-            Image image = new ImageIcon("resources/images/champion/" + c.getImage().getFull()).getImage();
+        List<Champion> list = controller.getAllChampions();
+        for(Champion c : list){
+            Image image = new ImageIcon("resources/images/champion/" + c.getChampionData().getImage().getFull()).getImage();
             ImageIcon icon = new ImageIcon(image.getScaledInstance(78, 78,  java.awt.Image.SCALE_SMOOTH ));
             try {
-                buttonList.add(new ChampionButton(c.getName(), icon, i));
+                buttonList.add(new ChampionButton(c.getChampionData().getName(), icon, c.getID(), buttonIntegerListener));
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            i++;
         }
-        setLayout(new GridBagLayout());
-
-        gc.weightx = 0;
-        gc.weighty = 0;
-        gc.gridy = 0;
-        gc.gridx = 0;
-        gc.fill = GridBagConstraints.NONE;
-        gc.anchor = GridBagConstraints.NORTHWEST;
+        //setLayout(new GridBagLayout());
+        setLayout(new WrapLayout());
 
     }
 
     public void addButton(int id){
-        gc.insets = new Insets(2, 2, 2, 2);
-        add(buttonList.get(id), gc);
-
-        if (getWidth() > gc.gridx * 85 && gc.gridx < 10){
-            gc.gridx++;
-            //gc.anchor = GridBagConstraints.LINE_START;
-        }
-        else{
-            gc.gridy++;
-            gc.gridx = 0;
-            //gc.anchor = GridBagConstraints.LINE_END;
-        }
+        add(buttonList.get(id));
     }
 
     public void removeAllButtons(){
         removeAll();
-        gc.gridy = 0;
-        gc.gridx = 0;
-        //gc.anchor = GridBagConstraints.FIRST_LINE_END;
         validate();
         repaint();
     }
@@ -85,4 +64,8 @@ public class ChampionButtonsPanel extends JPanel {
         validate();
     }
 
+
+    public void setController(Controller controller) {
+        this.controller = controller;
+    }
 }

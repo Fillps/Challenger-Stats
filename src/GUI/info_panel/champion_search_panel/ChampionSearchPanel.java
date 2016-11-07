@@ -1,5 +1,6 @@
 package GUI.info_panel.champion_search_panel;
 
+import GUI.ButtonIntegerListener;
 import controller.Controller;
 import model.database.data_structure.TrieMapExtended;
 import model.database.stats_structure.entity.Champion;
@@ -16,36 +17,39 @@ import java.util.List;
  */
 public class ChampionSearchPanel extends JPanel{
 
-    private ChampionButtonsPanel championButtonsPanel = new ChampionButtonsPanel();
+    private ChampionButtonsPanel championButtonsPanel;
     private JScrollPane championButtonsScrollPanel = new JScrollPane();
     private TextFieldPanel textFieldPanel = new TextFieldPanel();
 
 
     private Controller controller;
 
-    public ChampionSearchPanel(){
+    public ChampionSearchPanel(ButtonIntegerListener buttonIntegerListener, Controller controller){
 
+        this.controller = controller;
         setLayout(new BorderLayout());
 
+        Border innerBorder = BorderFactory.createTitledBorder("Search Panel");
+        Border outerBorder = BorderFactory.createEmptyBorder(5, 5, 5, 5);
+        setBorder(BorderFactory.createCompoundBorder(outerBorder, innerBorder));
+
         add(textFieldPanel, BorderLayout.NORTH);
+
+        championButtonsPanel = new ChampionButtonsPanel(buttonIntegerListener, controller);
 
         championButtonsScrollPanel.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         championButtonsScrollPanel.setViewportView(championButtonsPanel);
 
         add(championButtonsScrollPanel, BorderLayout.CENTER);
 
-        championButtonsPanel.addAllButtons();
-        championButtonsScrollPanel.validate();
-        championButtonsScrollPanel.repaint();
-        validate();
-        repaint();
+
 
 
         championButtonsPanel.addComponentListener(new ComponentListener() {
             @Override
             public void componentResized(ComponentEvent e) {
-                championButtonsPanel.removeAllButtons();
-                handleChampionsNames(textFieldPanel.getText());
+                //championButtonsPanel.removeAllButtons();
+                //handleChampionsNames(textFieldPanel.getText());
             }
 
             @Override
@@ -95,20 +99,23 @@ public class ChampionSearchPanel extends JPanel{
             }
         });
 
-        Border innerBorder = BorderFactory.createTitledBorder("Search Panel");
-        Border outerBorder = BorderFactory.createEmptyBorder(5, 5, 5, 5);
-        setBorder(BorderFactory.createCompoundBorder(outerBorder, innerBorder));
 
 
 
+
+
+
+
+        championButtonsPanel.addAllButtons();
+        championButtonsScrollPanel.validate();
+        championButtonsScrollPanel.repaint();
+        validate();
+        repaint();
 
 
 
     }
 
-    public void setController(Controller controller){
-        this.controller = controller;
-    }
 
     private void handleChampionsNames(String text){
         List<Integer> list = controller.getTrieChampionsNames().getListValuesOnSubTree(text.toLowerCase());
@@ -123,7 +130,4 @@ public class ChampionSearchPanel extends JPanel{
         repaint();
     }
 
-    /*public void setTrieChampionsNames(TrieMapExtended trieChampionsNames) {
-        this.trieChampionsNames = trieChampionsNames;
-    }*/
 }

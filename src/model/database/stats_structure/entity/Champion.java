@@ -44,4 +44,8 @@ public class Champion implements Serializable {
 	public net.rithms.riot.api.endpoints.static_data.dto.Champion getChampionData() {
 		return championData;
 	}
+
+	public String toString(){
+		return ID + ": " + getChampionData().getName();
+	}
 }

@@ -7,15 +7,15 @@ import model.riot_api.StaticData;
 import net.rithms.riot.api.RiotApiException;
 import net.rithms.riot.api.endpoints.static_data.dto.Champion;
 
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
+import java.util.*;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by filip on 17/10/2016.
@@ -79,16 +79,35 @@ public class StaticDataTests {
 
     public static void saveNameOfChampionOnTrieMap(String local){
         TrieMapExtended<String, Integer> trieMap = new TrieMapExtended<>();
-        StaticData staticData = WriterAndReader.read("arquivos/StaticData.ser");
-        List<Champion> list = new ArrayList<Champion>(staticData.getChampionList().getData().values());
-        int i = 0;
-        for (Champion c : list){
-            trieMap.put(c.getName().toLowerCase(), i);
-            i++;
+
+        List<model.database.stats_structure.entity.Champion> list = WriterAndReader.read("arquivos/ListChampions.ser");
+        System.out.println(list.toString());
+        for (model.database.stats_structure.entity.Champion c : list){
+            trieMap.put(c.getChampionData().getName().toLowerCase(), c.getID());
         }
+        System.out.print(trieMap.toString());
         WriterAndReader.write(trieMap, local);
     }
 
+    public static void saveChampionsList(String local){
+        StaticData staticData = WriterAndReader.read("arquivos/StaticData.ser");
+        List<net.rithms.riot.api.endpoints.static_data.dto.Champion> list;
+        list = new ArrayList<net.rithms.riot.api.endpoints.static_data.dto.Champion>(staticData.getChampionList().getData().values());
+        Collections.sort(list, new Comparator<net.rithms.riot.api.endpoints.static_data.dto.Champion>() {
+            @Override
+            public int compare(net.rithms.riot.api.endpoints.static_data.dto.Champion o1, net.rithms.riot.api.endpoints.static_data.dto.Champion o2) {
+                return o1.getName().compareTo(o2.getName());
+            }
+        });
+
+        List<model.database.stats_structure.entity.Champion> listChampion = new ArrayList<model.database.stats_structure.entity.Champion>();
+        int i = 0;
+        for(net.rithms.riot.api.endpoints.static_data.dto.Champion c : list){
+            listChampion.add(new model.database.stats_structure.entity.Champion(i,c));
+            i++;
+        }
+        WriterAndReader.write(listChampion, local);
+    }
 
 }
 

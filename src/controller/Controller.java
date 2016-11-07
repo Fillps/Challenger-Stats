@@ -6,6 +6,8 @@ import model.database.files.Database;
 import model.database.files.WriterAndReader;
 import model.database.stats_structure.entity.Champion;
 
+import java.util.List;
+
 /**
  * Created by filip on 06/11/2016.
  */
@@ -21,5 +23,8 @@ public class Controller {
         return db.getChampion(id);
     }
 
+    public List<Champion> getAllChampions(){
+        return db.getAllChampions();
+    }
 
 }

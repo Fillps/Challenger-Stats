@@ -1,7 +1,6 @@
 package GUI;
 
 import GUI.info_panel.InfoPanel;
-import GUI.menu.MenuListener;
 import GUI.menu.MenuPanel;
 import controller.Controller;
 
@@ -15,21 +14,20 @@ public class MainFrame extends JFrame {
 
     private Controller controller = new Controller();
     private MenuPanel menuPanel = new MenuPanel();
-    private InfoPanel infoPanel = new InfoPanel();
+    private InfoPanel infoPanel = new InfoPanel(controller);
 
     public MainFrame(String title){
         super(title);
 
         setLayout(new BorderLayout());
-        infoPanel.setController(controller);
 
         add(menuPanel, BorderLayout.WEST);
         add(infoPanel, BorderLayout.CENTER);
 
 
-        menuPanel.setMenuListener(new MenuListener() {
+        menuPanel.setButtonIntegerListener(new ButtonIntegerListener() {
             @Override
-            public void menuEventButton(int buttonIndex) {
+            public void ButtonIntegerEvent(int buttonIndex) {
                 infoPanel.removeAll();
                 infoPanel.addComponent(buttonIndex);
                 infoPanel.setVisible(false);
