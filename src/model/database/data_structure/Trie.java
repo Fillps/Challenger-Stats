@@ -1,5 +1,6 @@
-package database.data_structure;
+package model.database.data_structure;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
 
@@ -15,8 +16,9 @@ import java.util.Arrays;
  * @author Justin Wetherell <phishman3579@gmail.com>
  */
 @SuppressWarnings("unchecked")
-public class Trie<C extends CharSequence> implements ITree<C> {
+public class Trie<C extends CharSequence> implements ITree<C>, Serializable {
 
+    private static final long serialVersionUID = -1529383871446096492L;
     private int size = 0;
 
     protected INodeCreator creator = null;
@@ -252,11 +254,14 @@ public class Trie<C extends CharSequence> implements ITree<C> {
         return TriePrinter.getString(this);
     }
 
-    protected static class Node {
+    protected static class Node implements Serializable{
+
+        private static final long serialVersionUID = -7653018787373929511L;
 
         private static final int MINIMUM_SIZE = 2;
 
         protected static final char SENTINAL = '\0';
+
 
         protected Node[] children = new Node[MINIMUM_SIZE];
         protected int childrenSize = 0;
@@ -327,7 +332,7 @@ public class Trie<C extends CharSequence> implements ITree<C> {
         }
     }
 
-    protected static interface INodeCreator {
+    protected static interface INodeCreator extends Serializable {
 
         /**
          * Create a new node for sequence.
@@ -343,7 +348,9 @@ public class Trie<C extends CharSequence> implements ITree<C> {
         public Node createNewNode(Node parent, Character character, boolean isWord);
     }
 
-    protected static class TriePrinter {
+    protected static class TriePrinter implements Serializable{
+
+        private static final long serialVersionUID = -8849538264559589842L;
 
         public static <C extends CharSequence> void print(Trie<C> trie) {
             System.out.println(getString(trie));
@@ -380,8 +387,9 @@ public class Trie<C extends CharSequence> implements ITree<C> {
         }
     }
 
-    public static class JavaCompatibleTrie<C extends CharSequence> extends java.util.AbstractCollection<C> {
+    public static class JavaCompatibleTrie<C extends CharSequence> extends java.util.AbstractCollection<C> implements Serializable{
 
+        private static final long serialVersionUID = 5913116703142224535L;
         private Trie<C> trie = null;
 
         public JavaCompatibleTrie(Trie<C> trie) {

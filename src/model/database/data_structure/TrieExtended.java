@@ -1,18 +1,26 @@
-package database.data_structure;
+package model.database.data_structure;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.StringJoiner;
 
 /**
  * Created by filip on 05/11/2016.
  */
 public class TrieExtended<C extends CharSequence> extends Trie {
 
+    private static final long serialVersionUID = -2241453108817231142L;
+
+    public TrieExtended(){ super(); }
+    public TrieExtended(INodeCreator creator){
+        super(creator);
+    }
+
     public List<String> getListSubTree(C seq){
-        if (!contains(seq))
-            return null;
+
         List<String> list = new ArrayList<String>();
+        if (getNode(seq)==null)
+            return list;
+
         Node node = getNode(seq);
         if (node.isWord)
             list.add(seq.toString());
