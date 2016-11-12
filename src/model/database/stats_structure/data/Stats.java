@@ -9,20 +9,23 @@ public class Stats implements Serializable {
 
     private static final long serialVersionUID = -4183730106517931399L;
 
-    private float win_rate;
-    private int gold_earned;
-    private int kills;
-    private int assists;
-    private int deaths;
-    private int heal;
-    private int pinkWards_bought;
-    private int wards_placed;
-    private int wards_killed;
+    private double kDA;
+    private double win_rate;
+    private double kills;
+    private double assists;
+    private double deaths;
+    private double minions_killed;
+    private double pinkWards_bought;
+    private double wards_placed;
+    private double wards_killed;
+
     private int damage_dealt;
     private int damage_dealt_to_champions;
     private int damage_taken;
+    private int gold_earned;
+    private int heal;
 
-
+    private int total_minions_killed;
     private int total_bans;
     private int games_analyzed;
     private int total_wins;
@@ -38,9 +41,10 @@ public class Stats implements Serializable {
     private int total_damage_dealt_to_champions;
     private int total_damage_taken;
 
+
     public void addGame(boolean win, int total_gold_earned, int total_kills, int total_assists, int total_deaths,
                         int total_heal, int total_pinkWards_bought, int total_wards_placed, int total_wards_killed,
-                        int total_damage_dealt, int total_damage_dealt_to_champions, int total_damage_taken) {
+                        int total_damage_dealt, int total_damage_dealt_to_champions, int total_damage_taken, int total_minions_killed) {
         if (win)
             this.total_wins++;
         this.games_analyzed++;
@@ -55,18 +59,22 @@ public class Stats implements Serializable {
         this.total_damage_dealt += total_damage_dealt;
         this.total_damage_dealt_to_champions += total_damage_dealt_to_champions;
         this.total_damage_taken += total_damage_taken;
-        this.win_rate = this.total_wins / this.games_analyzed;
+        this.total_minions_killed = total_minions_killed;
+
+        this.minions_killed = ((double)this.total_minions_killed) / this.games_analyzed;
+        this.win_rate = ((double)this.total_wins) / this.games_analyzed;
         this.gold_earned = this.total_gold_earned / this.games_analyzed;
-        this.kills = this.total_kills / this.games_analyzed;
-        this.assists = this.total_assists / this.games_analyzed;
-        this.deaths = this.total_deaths / this.games_analyzed;
+        this.kills = ((double)this.total_kills) / this.games_analyzed;
+        this.assists = ((double)this.total_assists) / this.games_analyzed;
+        this.deaths = ((double)this.total_deaths) / this.games_analyzed;
         this.heal = this.total_heal / this.games_analyzed;
-        this.pinkWards_bought = this.total_pinkWards_bought / this.games_analyzed;
-        this.wards_placed = this.total_wards_placed / this.games_analyzed;
-        this.wards_killed = this.total_wards_killed / this.games_analyzed;
+        this.pinkWards_bought = ((double)this.total_pinkWards_bought) / this.games_analyzed;
+        this.wards_placed = ((double)this.total_wards_placed) / this.games_analyzed;
+        this.wards_killed = ((double)this.total_wards_killed) / this.games_analyzed;
         this.damage_dealt = this.total_damage_dealt / this.games_analyzed;
         this.damage_dealt_to_champions = this.total_damage_dealt_to_champions / this.games_analyzed;
         this.damage_taken = this.total_damage_taken / this.games_analyzed;
+        this.kDA = (this.kills + this.assists) / this.deaths;
     }
 
 
@@ -110,7 +118,7 @@ public class Stats implements Serializable {
         return total_damage_dealt;
     }
 
-    public float getWin_rate() {
+    public double getWin_rate() {
         return win_rate;
     }
 
@@ -122,15 +130,15 @@ public class Stats implements Serializable {
         return gold_earned;
     }
 
-    public int getKills() {
+    public double getKills() {
         return kills;
     }
 
-    public int getAssists() {
+    public double getAssists() {
         return assists;
     }
 
-    public int getDeaths() {
+    public double getDeaths() {
         return deaths;
     }
 
@@ -138,15 +146,15 @@ public class Stats implements Serializable {
         return heal;
     }
 
-    public int getPinkWards_bought() {
+    public double getPinkWards_bought() {
         return pinkWards_bought;
     }
 
-    public int getWards_placed() {
+    public double getWards_placed() {
         return wards_placed;
     }
 
-    public int getWards_killed() {
+    public double getWards_killed() {
         return wards_killed;
     }
 
@@ -176,5 +184,17 @@ public class Stats implements Serializable {
 
     public int getTotal_bans() {
         return total_bans;
+    }
+
+    public double getMinions_killed() {
+        return minions_killed;
+    }
+
+    public int getTotal_minions_killed() {
+        return total_minions_killed;
+    }
+
+    public double getKDA() {
+        return kDA;
     }
 }

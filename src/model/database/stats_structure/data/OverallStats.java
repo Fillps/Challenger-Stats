@@ -1,9 +1,29 @@
 package model.database.stats_structure.data;
 
+import java.io.Serializable;
+
 /**
  * Created by filip on 04/11/2016.
  */
-public class OverallStats {
-    private int games_analyzed;
+public class OverallStats implements Serializable
+{
+    private static final long serialVersionUID = 2918080219127701479L;
+
+    private int champions_analysed;
+    private int matches_analysed;
+    private int total_bans;
+
+    public void addChampion(){
+        champions_analysed++;
+    }
+    public void addMatch(){ matches_analysed++; }
+    public void addBan(){ total_bans++; }
+    public double getPlayRate(int value){
+        return ((double) value) / matches_analysed;
+    }
+
+    public double getBanRate(int value){
+        return ((double) (value) / total_bans);
+    }
 
 }
