@@ -22,11 +22,11 @@ public class Champion implements Serializable {
 	public void addGame(boolean win, int total_gold_earned, int total_kills, int total_assists,
 						int total_deaths, int total_heal, int total_pinkWards_bought,
 						int total_wards_placed, int total_wards_killed, int total_damage_dealt,
-						int total_damage_deat_to_champions, int total_damage_taken){
+						int total_damage_deat_to_champions, int total_damage_taken, int total_minions_killed){
 
 		this.stats.addGame(win,total_gold_earned,total_kills,total_assists,total_deaths,
 				total_heal,total_pinkWards_bought,total_wards_placed,total_wards_killed
-				,total_damage_dealt, total_damage_deat_to_champions, total_damage_taken);
+				,total_damage_dealt, total_damage_deat_to_champions, total_damage_taken, total_minions_killed);
 	}
 
 	public void addBan(){
