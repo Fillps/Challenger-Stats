@@ -18,6 +18,7 @@ public class Path {
     public static final String CHAMPION_SPLASH = (MAIN_FOLDER + IMAGE_FOLDER + "champion/splash/");
     public static final String RUNE_ICONS = (MAIN_FOLDER + IMAGE_FOLDER + "rune/");
     public static final String ITEM_ICONS = (MAIN_FOLDER + IMAGE_FOLDER + "item/");
+    public static final String SPELL_ICONS = (MAIN_FOLDER + IMAGE_FOLDER + "spell/");
 
     public static final String BTREE_CHAMPION_RIOT_ID = (MAIN_FOLDER + DATA_FOLDER + "BTree_ChampionRiotID.bin");
     public static final String BTREE_MASTERY_PAGE_RIOT_ID = (MAIN_FOLDER + DATA_FOLDER + "BTree_MasteryPageRiotID.bin");
@@ -47,5 +48,6 @@ public class Path {
     public static final String CHAMPION_RUNE_PAEG_LIST = (MAIN_FOLDER + DATA_FOLDER + "Champion_RunePageList.ser");
     public static final String CHAMPION_ITEM_LIST = (MAIN_FOLDER + DATA_FOLDER + "Champion_ItemList.ser");
     public static final String CHAMPION_MASTERY_PAGE_LIST = (MAIN_FOLDER + DATA_FOLDER + "Champion_MasteryPageList.ser");
+
 
 }

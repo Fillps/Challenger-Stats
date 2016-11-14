@@ -2,11 +2,14 @@ package tests;
 
 import model.database.data_structure.TrieExtended;
 import model.database.data_structure.TrieMapExtended;
+import model.database.files.Path;
 import model.database.files.WriterAndReader;
+import model.database.stats_structure.entity.*;
+import model.database.stats_structure.relationship.Champion_Entity;
+import model.database.stats_structure.relationship.Champion_SummonerSpell;
 import model.riot_api.StaticData;
 import net.rithms.riot.api.RiotApiException;
 import net.rithms.riot.api.endpoints.static_data.dto.Champion;
-
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -48,7 +51,7 @@ public class StaticDataTests {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-        frame.show();
+        //frame.show();
     }
 
     public static void TesteIDs(){
@@ -107,6 +110,69 @@ public class StaticDataTests {
             i++;
         }
         WriterAndReader.write(listChampion, local);
+    }
+
+    public static void saveAllEntitys(){
+        StaticData staticData = WriterAndReader.read("arquivos/StaticData.ser");
+        List<net.rithms.riot.api.endpoints.static_data.dto.Item> listRiotItem = new ArrayList<>(staticData.getItemList().getData().values());
+        Collections.sort(listRiotItem, new Comparator<net.rithms.riot.api.endpoints.static_data.dto.Item>() {
+            @Override
+            public int compare(net.rithms.riot.api.endpoints.static_data.dto.Item o1, net.rithms.riot.api.endpoints.static_data.dto.Item o2) {
+                return Integer.compare(o1.getId(), o2.getId());
+            }
+        });
+        List<Item> listItem = new ArrayList<>();
+        int i = 0;
+        for(net.rithms.riot.api.endpoints.static_data.dto.Item item : listRiotItem){
+            listItem.add(new Item(i,item));
+            i++;
+        }
+
+        List<net.rithms.riot.api.endpoints.static_data.dto.Mastery> listRiotMastery = new ArrayList<>(staticData.getMasteryList().getData().values());
+        Collections.sort(listRiotMastery, (o1, o2) -> Integer.compare(o1.getId(), o2.getId()));
+        List<Mastery> listMastery = new ArrayList<>();
+        i = 0;
+        for(net.rithms.riot.api.endpoints.static_data.dto.Mastery mastery : listRiotMastery){
+            listMastery.add(new Mastery(i,mastery));
+            i++;
+        }
+
+        List<net.rithms.riot.api.endpoints.static_data.dto.Rune> listRiotRune = new ArrayList<>(staticData.getRuneList().getData().values());
+        Collections.sort(listRiotRune, (o1, o2) -> o1.getName().compareTo(o2.getName()));
+        List<Rune> listRune = new ArrayList<>();
+        i = 0;
+        for(net.rithms.riot.api.endpoints.static_data.dto.Rune rune : listRiotRune){
+            listRune.add(new Rune(i,rune));
+            i++;
+        }
+
+        List<net.rithms.riot.api.endpoints.static_data.dto.SummonerSpell> listRiotSummonerSpell = new ArrayList<>(staticData.getSummonerSpellList().getData().values());
+        Collections.sort(listRiotSummonerSpell, (o1, o2) -> o1.getName().compareTo(o2.getName()));
+        List<SummonerSpell> listSummonerSpell = new ArrayList<>();
+        i = 0;
+        for(net.rithms.riot.api.endpoints.static_data.dto.SummonerSpell summonerSpell : listRiotSummonerSpell){
+            listSummonerSpell.add(new SummonerSpell(i,summonerSpell));
+            i++;
+        }
+
+        List<RunePage> listRunePage = new ArrayList<>();
+        List<MasteryPage> listMasteryPage = new ArrayList<>();
+
+        List<Champion_SummonerSpell> listChampion_summonerSpell = new ArrayList<>();
+        List<Champion_Entity> listChampion_Item = new ArrayList<>();
+        List<Champion_Entity> listChampion_RunePage = new ArrayList<>();
+        List<Champion_Entity> listChampion_MasteryPage = new ArrayList<>();
+
+
+        WriterAndReader.write(listItem, Path.ITEM_LIST);
+        WriterAndReader.write(listMastery, Path.MASTERY_LIST);
+        WriterAndReader.write(listMasteryPage, Path.MASTERY_PAGE_LIST);
+        WriterAndReader.write(listSummonerSpell, Path.SUMMONERSPEEL_LIST);
+
+        WriterAndReader.write(listChampion_summonerSpell, Path.CHAMPION_SUMMONERSPELL_LIST);
+        WriterAndReader.write(listChampion_Item, Path.CHAMPION_ITEM_LIST);
+        WriterAndReader.write(listChampion_RunePage, Path.CHAMPION_RUNE_PAEG_LIST);
+        WriterAndReader.write(listChampion_MasteryPage, Path.CHAMPION_MASTERY_PAGE_LIST);
     }
 
 }

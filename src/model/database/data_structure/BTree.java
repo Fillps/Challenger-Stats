@@ -161,6 +161,12 @@ public class BTree<T extends Comparable<T>> implements ITree<T> {
         }
     }
 
+    public T getValue(T value){
+        Node<T> node = this.getNode(value);
+        int index = node.indexOf(value);
+        return node.getKey(index);
+    }
+
     /**
      * {@inheritDoc}
      */

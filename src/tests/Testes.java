@@ -1,22 +1,13 @@
 package tests;
 
+import model.sorting_algorithms.*;
+import model.sorting_algorithms.comparators.ComparatorDigitCatcher;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-
-import model.sorting_algorithms.comparators.ComparatorDigitCatcher;
-import model.sorting_algorithms.BubbleSort;
-import model.sorting_algorithms.HeapSort;
-import model.sorting_algorithms.InsertionSortBuscaBinaria;
-import model.sorting_algorithms.InsertionSortBuscaLinear;
-import model.sorting_algorithms.MergeSort;
-import model.sorting_algorithms.ShellSort;
-import model.sorting_algorithms.SortingAlgorithm;
-import model.sorting_algorithms.SortingAlgorithmNonComparator;
-import model.sorting_algorithms.RadixSort;
-import model.sorting_algorithms.QuickSortRandomizado;
 
 public abstract class Testes {
 

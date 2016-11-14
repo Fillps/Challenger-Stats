@@ -1,17 +1,11 @@
 package GUI.info_panel.champion_search_panel;
 
 import GUI.ButtonIntegerListener;
-import model.database.stats_structure.entity.Champion;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.beans.PropertyChangeListener;
-import java.io.File;
 import java.io.IOException;
 
 /**
@@ -31,7 +25,7 @@ public class ChampionButton extends JPanel {
         this.buttonIntegerListener = buttonIntegerListener;
         button.setForeground(Color.LIGHT_GRAY);
         button.setBackground(Color.BLACK);
-        setBackground(Color.LIGHT_GRAY);
+        //setBackground(new Color(238, 229, 113));
         button.setBorder(null);
         //button.setContentAreaFilled(false);
         button.setBounds(1,1,1,1);

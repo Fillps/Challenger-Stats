@@ -30,15 +30,16 @@ public class MainFrame extends JFrame {
             public void ButtonIntegerEvent(int buttonIndex) {
                 infoPanel.removeAll();
                 infoPanel.addComponent(buttonIndex);
-                infoPanel.setVisible(false);
-                infoPanel.setVisible(true);
+                infoPanel.validate();
+                infoPanel.repaint();
+
             }
         });
 
 
 
         setMinimumSize(new Dimension(500, 400));
-        setSize(1240, 700);
+        setSize(1335, 700);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }

@@ -15,7 +15,7 @@ import java.awt.event.KeyEvent;
 public class MenuPanel extends JPanel {
     private MenuButton championSearchButton = new MenuButton("Search Champion");
     private MenuButton masterysButton = new MenuButton("Masterys");
-    private MenuButton championsButton = new MenuButton("Champions");
+    private MenuButton championsButton = new MenuButton("Champions Stats");
     private MenuButton runesButton = new MenuButton("Runes");
     private MenuButton itemsButton = new MenuButton("Items");
 
@@ -35,9 +35,9 @@ public class MenuPanel extends JPanel {
 
         add(championSearchButton, BorderLayout.CENTER, 0);
         add(championsButton, BorderLayout.CENTER, 1);
-        add(runesButton, BorderLayout.CENTER, 2);
-        add(masterysButton, BorderLayout.CENTER, 3);
-        add(itemsButton, BorderLayout.CENTER, 4);
+        //add(runesButton, BorderLayout.CENTER, 2);
+        //add(masterysButton, BorderLayout.CENTER, 3);
+        //add(itemsButton, BorderLayout.CENTER, 4);
 
 
         championSearchButton.addActionListener(new ActionListener() {

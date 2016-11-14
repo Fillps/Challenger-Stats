@@ -1,19 +1,17 @@
 package model.riot_api;
 
+import net.rithms.riot.api.RiotApi;
+import net.rithms.riot.api.RiotApiAsync;
+import net.rithms.riot.api.RiotApiException;
+import net.rithms.riot.api.endpoints.match.dto.MatchDetail;
+import net.rithms.riot.api.request.AsyncRequest;
+import net.rithms.riot.api.request.RequestAdapter;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 import java.util.logging.Level;
-
-
-import net.rithms.riot.api.RiotApi;
-import net.rithms.riot.api.RiotApiAsync;
-import net.rithms.riot.api.RiotApiException;
-
-import net.rithms.riot.api.endpoints.match.dto.MatchDetail;
-import net.rithms.riot.api.request.AsyncRequest;
-import net.rithms.riot.api.request.RequestAdapter;
 
 /*
  * Classe que permite armazenar ou obter, com todos os ids das partidas, 

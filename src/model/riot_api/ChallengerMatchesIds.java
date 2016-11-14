@@ -1,21 +1,16 @@
 package model.riot_api;
 
 
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
-import java.util.logging.Level;
-
 import net.rithms.riot.api.RiotApi;
 import net.rithms.riot.api.RiotApiAsync;
 import net.rithms.riot.api.RiotApiException;
-
 import net.rithms.riot.api.endpoints.matchlist.dto.MatchList;
 import net.rithms.riot.api.endpoints.matchlist.dto.MatchReference;
 import net.rithms.riot.api.request.AsyncRequest;
 import net.rithms.riot.api.request.RequestAdapter;
+
+import java.util.*;
+import java.util.logging.Level;
 /*
  * Classe que permite armazenar ou obter, com todos os ids dos jogadores, 
  * partidas ranqueadas de um determinado patch na sua determinada regiao,

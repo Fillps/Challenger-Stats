@@ -1,14 +1,11 @@
 package GUI.info_panel.champion_search_panel;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.*;
-import java.awt.List;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-import java.util.*;
 
 /**
  * Created by filip on 06/11/2016.

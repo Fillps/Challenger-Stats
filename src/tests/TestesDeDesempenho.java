@@ -1,13 +1,12 @@
 package tests;
 
-import java.io.IOException;
-
+import model.database.files.WriterAndReader;
+import model.sorting_algorithms.MergeSort;
 import model.sorting_algorithms.comparators.ComparatorDigitCatcher;
 import model.sorting_algorithms.comparators.Comparators;
-import model.database.files.WriterAndReader;
+import net.rithms.riot.api.endpoints.match.dto.MatchDetail;
 
-import net.rithms.riot.api.endpoints.match.dto.*;
-import model.sorting_algorithms.MergeSort;
+import java.io.IOException;
 
 
 /*

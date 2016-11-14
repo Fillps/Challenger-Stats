@@ -1,8 +1,7 @@
 package GUI;
 
+import javax.swing.*;
 import java.awt.*;
-import javax.swing.JScrollPane;
-import javax.swing.SwingUtilities;
 
 /**
  * RETIRADO DE: https://tips4java.wordpress.com/2008/11/06/wrap-layout/

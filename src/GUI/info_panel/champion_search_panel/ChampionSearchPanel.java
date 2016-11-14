@@ -2,8 +2,6 @@ package GUI.info_panel.champion_search_panel;
 
 import GUI.ButtonIntegerListener;
 import controller.Controller;
-import model.database.data_structure.TrieMapExtended;
-import model.database.stats_structure.entity.Champion;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -39,7 +37,8 @@ public class ChampionSearchPanel extends JPanel{
 
         championButtonsScrollPanel.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         championButtonsScrollPanel.setViewportView(championButtonsPanel);
-
+        championButtonsScrollPanel.getVerticalScrollBar().setUnitIncrement(20);
+        championButtonsScrollPanel.setBorder(null);
         add(championButtonsScrollPanel, BorderLayout.CENTER);
 
 

@@ -2,7 +2,6 @@ package model.database.stats_structure.entity;
 
 import model.database.stats_structure.data.Stats;
 
-
 import java.io.Serializable;
 
 
@@ -48,4 +47,5 @@ public class Champion implements Serializable {
 	public String toString(){
 		return ID + ": " + getChampionData().getName();
 	}
+
 }

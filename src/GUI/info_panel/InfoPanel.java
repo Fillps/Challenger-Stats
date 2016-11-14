@@ -3,12 +3,10 @@ package GUI.info_panel;
 import GUI.ButtonIntegerListener;
 import GUI.info_panel.champion_panel.ChampionPanel;
 import GUI.info_panel.champion_search_panel.ChampionSearchPanel;
+import GUI.info_panel.champions_stats_panel.ChampionStatsPanel;
 import controller.Controller;
-import model.database.data_structure.TrieExtended;
-import model.database.data_structure.TrieMapExtended;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 
 /**
@@ -16,11 +14,11 @@ import java.awt.*;
  */
 public class InfoPanel extends JPanel{
 
-    private ChampionPanel championPanel = new ChampionPanel();
+    private ChampionStatsPanel championStatsPanel;
     private ChampionSearchPanel championSearchPanel;
-    private ItemPanel itemPanel = new ItemPanel();
-    private RunePanel runePanel = new RunePanel();
-    private MasteryPanel masteryPanel = new MasteryPanel();
+    private ItemStatsPanel itemStatsPanel = new ItemStatsPanel();
+    private RuneStatsPanel runeStatsPanel = new RuneStatsPanel();
+    private MasterysStatsPanel masterysStatsPanel = new MasterysStatsPanel();
 
     public InfoPanel(Controller controller){
         setLayout(new BorderLayout());
@@ -28,10 +26,14 @@ public class InfoPanel extends JPanel{
         ButtonIntegerListener buttonIntegerListener = new ButtonIntegerListener() {
             @Override
             public void ButtonIntegerEvent(int buttonIndex) {
-                //// TODO: 07/11/2016
+                removeAll();
+                add(new ChampionPanel(buttonIndex, controller), BorderLayout.CENTER);
+                validate();
+                repaint();
             }
         };
         championSearchPanel = new ChampionSearchPanel(buttonIntegerListener, controller);
+        championStatsPanel = new ChampionStatsPanel(buttonIntegerListener, controller);
 
         add(championSearchPanel, BorderLayout.CENTER);
 
@@ -46,16 +48,16 @@ public class InfoPanel extends JPanel{
                 add(championSearchPanel, BorderLayout.CENTER);
                 break;
             case 1:
-                add(championPanel, BorderLayout.CENTER);
+                add(championStatsPanel, BorderLayout.CENTER);
                 break;
             case 2:
-                add(itemPanel, BorderLayout.CENTER);
+                add(itemStatsPanel, BorderLayout.CENTER);
                 break;
             case 3:
-                add(runePanel, BorderLayout.CENTER);
+                add(runeStatsPanel, BorderLayout.CENTER);
                 break;
             case 4:
-                add(masteryPanel, BorderLayout.CENTER);
+                add(masterysStatsPanel, BorderLayout.CENTER);
                 break;
             default:
                 removeAll();

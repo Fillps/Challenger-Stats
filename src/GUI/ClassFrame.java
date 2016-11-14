@@ -3,17 +3,14 @@ package GUI;
 import model.database.data_structure.TrieExtended;
 import model.database.files.WriterAndReader;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Container;
-import java.awt.event.*;
-import java.util.Collections;
-import java.util.List;
-
-
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import java.awt.*;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.util.Collections;
+import java.util.List;
 
 
 public class ClassFrame extends JFrame {
