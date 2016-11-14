@@ -5,5 +5,5 @@ import javax.swing.*;
 /**
  * Created by filip on 06/11/2016.
  */
-public class RunePanel extends JPanel {
+public class RuneStatsPanel extends JPanel {
 }

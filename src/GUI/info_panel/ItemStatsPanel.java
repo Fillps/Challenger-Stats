@@ -5,7 +5,7 @@ import javax.swing.*;
 /**
  * Created by filip on 06/11/2016.
  */
-public class ItemPanel extends JPanel {
+public class ItemStatsPanel extends JPanel {
     private JTable itemTable;
     private JPanel panel1;
 }

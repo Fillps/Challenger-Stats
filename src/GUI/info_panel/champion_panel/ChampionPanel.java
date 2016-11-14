@@ -146,6 +146,5 @@ public class ChampionPanel extends JPanel{
 
 
 
-
     }
 }
