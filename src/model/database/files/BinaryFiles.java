@@ -2,6 +2,8 @@ package model.database.files;
 
 import static java.nio.file.StandardOpenOption.APPEND;
 import static java.nio.file.StandardOpenOption.CREATE;
+
+
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -14,27 +16,35 @@ import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import model.database.stats_structure.entity.Champion;
 
+
 public class BinaryFiles {
-	
 	
 	private static final String INPUT_FILE_NAME = "highscores.bin";
 	private static final String OUTPUT_FILE_NAME = "arqTeste.bin";
 	private static final String ITEM_FILE_NAME = "itens.bin";
-	private static final String CHAMPION_FILE = "champions.bin";
+	public static final String CHAMPION_FILE = "champions.bin";
 	private static final String RUNE_FILE_NAME = "runes.bin";
 	private static final String MASTERY_FILE_NAME = "masteries.bin";
+	private static final String CHAMPIONMAP_FILE = "championMap.bin";
 	
-	private Map <Integer,Integer> mapChampion;
+	public static Map <Integer,Integer> mapChampion;
 	
+	public BinaryFiles(){
+		mapChampion = new HashMap<Integer,Integer>(); 
+		mapChampion.put(-1,0);		
+	}
 	
 	private static void log(Object aThing){
 	    System.out.println(String.valueOf(aThing));
 	}
 	
-	byte [] readAll(String aInputFileName){ //aInputFilePath seria C:\\Users\\workspace\\nome.bin, vou mudar isso depois
+	private byte [] readAll(String aInputFileName){ //aInputFilePath seria C:\\Users\\workspace\\nome.bin, vou mudar isso depois
 		
 		log("Lendo em binario aquivo em: " + aInputFileName);
 		File file = new File(aInputFileName);
@@ -68,7 +78,7 @@ public class BinaryFiles {
 		return resultado;
 	}
 	
-	byte [] readOnly(String aInputFileName, int pos, int len ){
+	private byte [] readOnly(String aInputFileName, int pos, int len ){
 		log("Lendo em binario aquivo em: " + aInputFileName);
 		Path p = Paths.get(aInputFileName);		
 		
@@ -100,7 +110,7 @@ public class BinaryFiles {
 		return resultado;
 	}
 
-	void write(byte[] aInput, String aOutputFileName){ //aOutputFileName seria "nome.bin"
+	private void write(byte[] aInput, String aOutputFileName){ //aOutputFileName seria "nome.bin"
 		log("Escrevendo no arquivo binario...");
 		Path p = Paths.get(aOutputFileName);		
 			
@@ -112,7 +122,7 @@ public class BinaryFiles {
 		}
 	}
 
-	void writeAt(byte[] aInput, String aOutputFileName, int pos, int len){
+	private void writeAt(byte[] aInput, String aOutputFileName, int pos, int len){
 		File file = new File(aOutputFileName);
 		
 		try (FileOutputStream output = new FileOutputStream(file)){
@@ -123,30 +133,37 @@ public class BinaryFiles {
 		}
 	}
 	
-	Object getObj(int id, String fileName, Map<Integer,Integer> dicionario) throws ClassNotFoundException, IOException{
+	public Object getObj(int id, String fileName, Map<Integer,Integer> dicionario) throws ClassNotFoundException, IOException{
 		int pos = dicionario.get(id);
+		int len;
 		
-		int len= dicionario.get(id+1)-pos; //Caga se n�o existir id+1, usar map.containsKey para a chave do final do arq
+		if(dicionario.containsKey(id+1)){
+			len = dicionario.get(id+1)-pos; 
+		}
+		else{
+			len = dicionario.get(-1)-pos;
+		}//problema se nao existir id+1, usar map.get(-1) para a chave do final do arq
 		
 		byte[] data = readOnly(fileName, pos, len);
 		
 		return Serializer.deserialize(data);
 	}
 	
-	void saveChampion(Champion champion) throws IOException{
+	public void saveChampion(Champion champion) throws IOException{
 		byte[] data = Serializer.serialize(champion);
-		int id=champion.getID();
-		//File file = new File(CHAMPION_FILE);
-		
+		int id = champion.getID();
+				
 		if(mapChampion.containsKey(id))
-			writeAt(data, CHAMPION_FILE, mapChampion.get(id), mapChampion.get(-1));
+			writeAt(data, CHAMPION_FILE, mapChampion.get(id), data.length);
 		else{
-			//if(!file.exists()) {mapChampion.put(-1,0);
-			//file.close();}
+			//File file = new File(CHAMPION_FILE);
+			//if(!file.exists()) mapChampion.put(-1,0); //Conferir se campeao ja foi salvo
+			
 			mapChampion.put(champion.getID(), mapChampion.get(-1));//mapChampion(key=-1) � a posicao do final do arquivo
 			write(data, CHAMPION_FILE);
-			int pos=mapChampion.get(-1);
+			int pos = mapChampion.get(-1);
 			mapChampion.put(-1,pos+data.length);
+			WriterAndReader.write(mapChampion, CHAMPIONMAP_FILE);
 		}
 	}
 }
