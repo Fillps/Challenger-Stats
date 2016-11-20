@@ -3,6 +3,7 @@ import model.database.files.BinaryFiles;
 import model.database.files.WriterAndReader;
 import model.database.stats_structure.entity.Champion;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,16 +45,21 @@ public class ChallengerStats {
 		
 		do{
 			try {
-				championF.saveChampion(lista_champion.get(i));
+				championF.saveObj(lista_champion.get(i));
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 			i++;
-		}while(i<=lista_champion.size());
+		}while(i<lista_champion.size());
 		
+		int len1 = BinaryFiles.mapChampion.get(-1);
+		File file = new File(model.database.files.BinaryFiles.CHAMPION_FILE);
+		long len2 = file.length();
+		System.out.printf("Tamanho do arq no dicionario: %d \n Tamanho do arq pelo arquivo: %d ",len1,len2);
+		System.out.printf("Posição Ahri: %d \n Posição Aatrox: %d ",BinaryFiles.mapChampion.get(1),BinaryFiles.mapChampion.get(0));
 		try {
-			Champion champion0 = (Champion) new Object();
-			champion0 = (Champion) championF.getObj(0, model.database.files.BinaryFiles.CHAMPION_FILE, BinaryFiles.mapChampion);
+			Champion champion0 = null;
+			champion0 = (Champion) championF.getObj(132, 'c');
 			System.out.println(champion0.toString());
 		} catch (ClassNotFoundException | IOException e) {
 			
