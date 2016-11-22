@@ -90,13 +90,12 @@ Challenger Stats precisa de Java 8 e as seguintes bibliotecas:
   - [Riot api java](https://github.com/rithms/riot-api-java)
   - [Google Gson](https://github.com/google/gson) - Parte do requisito para usar a biblioteca Riot api java.
 
-###Executar testes de desempenho:
+###Executar o Challenger Stats:
 
-Na pasta ***arquivos*** extraia ***dados.part01.rar***.
 
 Com o terminal aberto na pasta do projeto, execute os comandos:
 ```
-mkdir target
+cd "Diretório da pasta ChallengerStats" (exemplo: cd C:\Users\Documents\GitHub\Challenger-Stats)
 javac -d target -cp "library/*;src/" src/ChallengerStats.java
 java -cp "library/*;target/" ChallengerStats
 ```
