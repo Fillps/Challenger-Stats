@@ -1,6 +1,5 @@
 package GUI.info_panel.champion_panel;
 
-import GUI.ButtonIntegerListener;
 import controller.Controller;
 
 import javax.swing.*;
@@ -61,8 +60,7 @@ public class RuneTable extends JPanel {
                                        public void mouseClicked(MouseEvent e) {
                if (e.getClickCount() == 2) {
                    JTable target = (JTable) e.getSource();
-                   //int index = (int) runeTable.getValueAt(runeTable.getSelectedRow(), 0);
-                   int index = 0;
+                   int index = (int) runeTable.getValueAt(runeTable.getSelectedRow(), 0);
                    int runePageID = ((RuneTableModel) runeTable.getModel()).getRunePageFromRank(index);
                    removeAll();
                    validate();

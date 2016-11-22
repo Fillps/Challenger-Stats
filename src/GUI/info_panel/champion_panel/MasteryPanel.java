@@ -4,12 +4,9 @@ import GUI.info_panel.BackgroundPanel;
 import controller.Controller;
 import model.database.files.Path;
 import model.database.stats_structure.data.MasteryID;
-import model.database.stats_structure.entity.Mastery;
 import model.database.stats_structure.entity.MasteryPage;
 
 import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -33,7 +30,7 @@ public class MasteryPanel extends JPanel {
                 listener.actionPerformed(e);
             }
         });
-        List<MasteryID> listID = masteryPage.getMasterys();
+        List<MasteryID> listID = masteryPage.getMasteries();
         int j = 0;
         for(int i = 0; i < 41; i++){
             if (i == 1 || i == 6 || i==11){

@@ -24,7 +24,6 @@ public class MainFrame extends JFrame {
         add(menuPanel, BorderLayout.WEST);
         add(infoPanel, BorderLayout.CENTER);
 
-
         menuPanel.setButtonIntegerListener(new ButtonIntegerListener() {
             @Override
             public void ButtonIntegerEvent(int buttonIndex) {

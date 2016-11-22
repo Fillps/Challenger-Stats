@@ -14,7 +14,7 @@ import java.awt.event.KeyEvent;
  */
 public class MenuPanel extends JPanel {
     private MenuButton championSearchButton = new MenuButton("Search Champion");
-    private MenuButton masterysButton = new MenuButton("Masterys");
+    private MenuButton masteriesButton = new MenuButton("Masterys");
     private MenuButton championsButton = new MenuButton("Champions Stats");
     private MenuButton runesButton = new MenuButton("Runes");
     private MenuButton itemsButton = new MenuButton("Items");
@@ -30,13 +30,13 @@ public class MenuPanel extends JPanel {
         championSearchButton.setMnemonic(KeyEvent.VK_S);
         championsButton.setMnemonic(KeyEvent.VK_C);
         runesButton.setMnemonic(KeyEvent.VK_R);
-        masterysButton.setMnemonic(KeyEvent.VK_M);
+        masteriesButton.setMnemonic(KeyEvent.VK_M);
         itemsButton.setMnemonic(KeyEvent.VK_I);
 
         add(championSearchButton, BorderLayout.CENTER, 0);
         add(championsButton, BorderLayout.CENTER, 1);
         //add(runesButton, BorderLayout.CENTER, 2);
-        //add(masterysButton, BorderLayout.CENTER, 3);
+        //add(masteriesButton, BorderLayout.CENTER, 3);
         //add(itemsButton, BorderLayout.CENTER, 4);
 
 
@@ -57,7 +57,7 @@ public class MenuPanel extends JPanel {
             }
         });
 
-        masterysButton.addActionListener(new ActionListener() {
+        masteriesButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 buttonIntegerListener.ButtonIntegerEvent(3);
             }

@@ -6,6 +6,7 @@ import java.io.Serializable;
  * Created by filip on 04/11/2016.
  */
 public class RuneID implements Serializable, Comparable<RuneID>{
+    private static final long serialVersionUID = -4320601088524325789L;
     private int ID;
     private int rank;
 

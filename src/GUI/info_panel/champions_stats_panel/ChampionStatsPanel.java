@@ -24,7 +24,7 @@ public class ChampionStatsPanel extends JPanel {
 
     public ChampionStatsPanel(ButtonIntegerListener buttonIntegerListener, Controller controller){
 
-        championTableModel = new ChampionTableModel(controller.getAllChampions(), controller.getOverallStats());
+        championTableModel = new ChampionTableModel(controller, controller.getOverallStats());
         table = new JTable(championTableModel);
         table.setRowHeight(30);
 

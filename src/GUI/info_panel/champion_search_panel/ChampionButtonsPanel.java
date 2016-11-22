@@ -26,12 +26,13 @@ public class ChampionButtonsPanel extends JPanel {
         setLayout(new WrapLayout());
         //setBackground(new Color(238, 229, 113));
 
-        List<Champion> list = controller.getAllChampions();
-        for(Champion c : list){
-            Image image = new ImageIcon(Path.CHAMPION_ICON + c.getChampionData().getImage().getFull()).getImage();
+        List<Integer> list = controller.getAllChampionsIds();
+        for(Integer c : list){
+            Champion champion = controller.getChampion(c);
+            Image image = new ImageIcon(Path.CHAMPION_ICON +champion.getChampionData().getImage().getFull()).getImage();
             ImageIcon icon = new ImageIcon(image.getScaledInstance(78, 78,  java.awt.Image.SCALE_SMOOTH ));
             try {
-                buttonList.add(new ChampionButton(c.getChampionData().getName(), icon, c.getID(), buttonIntegerListener));
+                buttonList.add(new ChampionButton(champion.getChampionData().getName(), icon, champion.getID(), buttonIntegerListener));
             } catch (IOException e) {
                 e.printStackTrace();
             }

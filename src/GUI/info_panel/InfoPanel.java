@@ -18,7 +18,7 @@ public class InfoPanel extends JPanel{
     private ChampionSearchPanel championSearchPanel;
     private ItemStatsPanel itemStatsPanel = new ItemStatsPanel();
     private RuneStatsPanel runeStatsPanel = new RuneStatsPanel();
-    private MasterysStatsPanel masterysStatsPanel = new MasterysStatsPanel();
+    private MasteriesStatsPanel masteriesStatsPanel = new MasteriesStatsPanel();
 
     public InfoPanel(Controller controller){
         setLayout(new BorderLayout());
@@ -57,7 +57,7 @@ public class InfoPanel extends JPanel{
                 add(runeStatsPanel, BorderLayout.CENTER);
                 break;
             case 4:
-                add(masterysStatsPanel, BorderLayout.CENTER);
+                add(masteriesStatsPanel, BorderLayout.CENTER);
                 break;
             default:
                 removeAll();

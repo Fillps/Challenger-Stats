@@ -10,6 +10,19 @@ public class OverallStats implements Serializable
     private static final long serialVersionUID = 2918080219127701479L;
 
     private int champions_analysed;
+
+    public int getChampions_analysed() {
+        return champions_analysed;
+    }
+
+    public int getMatches_analysed() {
+        return matches_analysed;
+    }
+
+    public int getTotal_bans() {
+        return total_bans;
+    }
+
     private int matches_analysed;
     private int total_bans;
 

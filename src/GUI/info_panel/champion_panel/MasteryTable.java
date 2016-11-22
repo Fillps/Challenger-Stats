@@ -1,7 +1,6 @@
 package GUI.info_panel.champion_panel;
 
 import controller.Controller;
-import model.database.stats_structure.entity.Mastery;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -24,7 +23,7 @@ public class MasteryTable extends JPanel {
 
     public MasteryTable(Controller controller, int championID){
 
-        MasteryTableModel model = new MasteryTableModel(controller.getChampionMasterys(championID), controller);
+        MasteryTableModel model = new MasteryTableModel(controller.getChampionMasteries(championID), controller);
         masteryTable = new JTable(model);
         masteryTable.setRowHeight(30);
 
@@ -45,7 +44,6 @@ public class MasteryTable extends JPanel {
                 if (e.getClickCount() == 2) {
                     JTable target = (JTable) e.getSource();
                     int index = (int) masteryTable.getValueAt(masteryTable.getSelectedRow(), 0);
-                    //int index = 0;
                     int masteryPageID = ((MasteryTableModel) masteryTable.getModel()).getMasteryPageFromRank(index);
                     removeAll();
                     validate();

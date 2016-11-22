@@ -1,9 +1,12 @@
 package model.database.stats_structure.data;
 
+import java.io.Serializable;
+
 /**
  * Created by filip on 12/11/2016.
  */
-public class ChampEntityBasicInfo implements Comparable<ChampEntityBasicInfo> {
+public class ChampEntityBasicInfo implements Comparable<ChampEntityBasicInfo>, Serializable {
+    private static final long serialVersionUID = 471009263185882411L;
     private int ID;
     private int champion_ID;
     private int entity_ID;
@@ -22,6 +25,12 @@ public class ChampEntityBasicInfo implements Comparable<ChampEntityBasicInfo> {
         return Integer.compare(champion_ID, o.getChampion_ID());
     }
 
+
+    public boolean equals(ChampEntityBasicInfo o){
+        if (this.getID() == o.getID())
+            return true;
+        return false;
+    }
     public int getChampion_ID() {
         return champion_ID;
     }

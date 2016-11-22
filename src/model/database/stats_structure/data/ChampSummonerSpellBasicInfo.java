@@ -1,10 +1,13 @@
 package model.database.stats_structure.data;
 
+import java.io.Serializable;
+
 /**
  * Created by filip on 12/11/2016.
  */
 
-public class ChampSummonerSpellBasicInfo implements Comparable<ChampSummonerSpellBasicInfo> {
+public class ChampSummonerSpellBasicInfo implements Comparable<ChampSummonerSpellBasicInfo>, Serializable {
+    private static final long serialVersionUID = 1024103187209931559L;
     private int ID;
     private int champion_ID;
     private int summonerSpell_0_ID;
@@ -44,5 +47,11 @@ public class ChampSummonerSpellBasicInfo implements Comparable<ChampSummonerSpel
 
     public int getSummonerSpell_1_ID() {
         return summonerSpell_1_ID;
+    }
+
+    public boolean equals(ChampSummonerSpellBasicInfo o){
+        if (this.getID() == o.getID())
+            return true;
+        return false;
     }
 }

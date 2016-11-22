@@ -1,8 +1,10 @@
 package model.database.data_structure;
 
+import model.sorting_algorithms.comparators.SComparator;
+
+import java.io.Serializable;
 import java.util.ArrayDeque;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.Deque;
 
 
@@ -20,8 +22,9 @@ import java.util.Deque;
  * @author Justin Wetherell <phishman3579@gmail.com>
  */
 @SuppressWarnings("unchecked")
-public class BTree<T extends Comparable<T>> implements ITree<T> {
+public class BTree<T extends Comparable<T>> implements ITree<T>, Serializable {
 
+    private static final long serialVersionUID = -4481399117448274375L;
     // Default to 2-3 Tree
     private int minKeySize = 1;
     private int minChildrenSize = minKeySize + 1; // 2
@@ -163,9 +166,14 @@ public class BTree<T extends Comparable<T>> implements ITree<T> {
 
     public T getValue(T value){
         Node<T> node = this.getNode(value);
+        if (node == null) {
+            System.out.println("node NULL");
+            return null;
+        }
         int index = node.indexOf(value);
         return node.getKey(index);
     }
+
 
     /**
      * {@inheritDoc}
@@ -579,13 +587,14 @@ public class BTree<T extends Comparable<T>> implements ITree<T> {
         return TreePrinter.getString(this);
     }
 
-    private static class Node<T extends Comparable<T>> {
+    private static class Node<T extends Comparable<T>> implements Serializable{
 
+        private static final long serialVersionUID = -6947705584044223262L;
         private T[] keys = null;
         private int keysSize = 0;
         private Node<T>[] children = null;
         private int childrenSize = 0;
-        private Comparator<Node<T>> comparator = new Comparator<Node<T>>() {
+        private SComparator<Node<T>> comparator = new SComparator<Node<T>>() {
             @Override
             public int compare(Node<T> arg0, Node<T> arg1) {
                 return arg0.getKey(0).compareTo(arg1.getKey(0));
@@ -608,7 +617,7 @@ public class BTree<T extends Comparable<T>> implements ITree<T> {
 
         private int indexOf(T value) {
             for (int i = 0; i < keysSize; i++) {
-                if (keys[i].equals(value)) return i;
+                if (keys[i].compareTo(value)==0) return i;
             }
             return -1;
         }

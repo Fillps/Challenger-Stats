@@ -59,7 +59,7 @@ public class Stats implements Serializable {
         this.total_damage_dealt += total_damage_dealt;
         this.total_damage_dealt_to_champions += total_damage_dealt_to_champions;
         this.total_damage_taken += total_damage_taken;
-        this.total_minions_killed = total_minions_killed;
+        this.total_minions_killed += total_minions_killed;
 
         this.minions_killed = ((double)this.total_minions_killed) / this.games_analyzed;
         this.win_rate = ((double)this.total_wins) / this.games_analyzed;

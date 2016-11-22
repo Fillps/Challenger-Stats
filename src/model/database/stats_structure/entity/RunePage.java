@@ -58,4 +58,10 @@ public class RunePage implements Serializable, Comparable<RunePage> {
 	public double getResistance_stats() {
 		return resistance_stats;
 	}
+
+	public boolean equals(RunePage o){
+		if (this.getID() == o.getID())
+			return true;
+		return false;
+	}
 }
