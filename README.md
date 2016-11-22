@@ -1,4 +1,4 @@
-#Challenger Stats
+﻿#Challenger Stats
 
 ###O que é o Challenger Stats?
 
@@ -97,6 +97,6 @@ Na pasta ***arquivos*** extraia ***dados.part01.rar***.
 Com o terminal aberto na pasta do projeto, execute os comandos:
 ```
 mkdir target
-javac -d target -cp "library/*;src/" src/tests.TestesDeDesempenho.java
-java -cp "library/*;target/" tests.TestesDeDesempenho
+javac -d target -cp "library/*;src/" src/ChallengerStats.java
+java -cp "library/*;target/" ChallengerStats
 ```
